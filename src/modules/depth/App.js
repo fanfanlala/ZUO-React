@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import '../../assets/styles/depth.styl'
 import Read from '../../components/depth-recommend-read'
+import Article from '../../components/depth-more-article'
 class All extends Component {
   render () {
     return (
-      <div>
+      <div id="all">
         <Read />
+        <Article />
       </div>
     )
   }
