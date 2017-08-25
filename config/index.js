@@ -5,7 +5,7 @@ module.exports = {
     env: require('./dev.env'),
     assetsPublicPath: '/',
     assetSubDirectory: 'static',
-    port: 5000,
+    port: 8080,
         // 默认的代理方式
     proxyTable: {
       '/api': {

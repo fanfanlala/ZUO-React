@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import '../../assets/styles/App.styl'
+import '../../assets/styles/Home.styl'
+import '../../assets/styles/HomeBody.styl'
+import Home from '../../component/Home'
 class App extends Component {
   constructor (props) {
     super(props)
@@ -15,7 +18,7 @@ class App extends Component {
               return response.json()
             })
             .then(response => {
-              console.log(response.topic)
+              // console.log(response.topic)
               this.setState({
                 data: response.topic
               })
@@ -29,9 +32,7 @@ class App extends Component {
     // })
     return (
       <div>
-        <h1>APP-index</h1>
-        <a href='about.html'>关于我们</a>
-        <p>{this.state.data.title}</p>
+        <Home />
       </div>
     )
   }
