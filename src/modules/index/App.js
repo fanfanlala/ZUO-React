@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import '../../assets/styles/Homeright.styl'
-import HomeRight from '../../component/homeright'
 import '../../assets/styles/App.styl'
 import '../../assets/styles/Home.styl'
 import '../../assets/styles/HomeBody.styl'
@@ -9,9 +8,8 @@ class App extends Component {
   render () {
     return (
       <div>
-        <a href='depth.html'>depth</a>
+        <a href='depth.html'>点我跳转</a>
         <Home />
-        <HomeRight />
       </div>
     )
   }

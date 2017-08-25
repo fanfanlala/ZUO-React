@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import HomeRight from './homeright'
 class HomeBody extends Component {
   constructor (props) {
     super(props)
@@ -58,7 +59,9 @@ class HomeBody extends Component {
               </div>
             </div>
           </div>
-          <div className='right_col'>right</div>
+          <div className='right_col'>
+            <HomeRight />
+          </div>
         </div>
       </div>
     )

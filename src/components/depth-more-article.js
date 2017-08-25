@@ -24,7 +24,6 @@ class Article extends Component {
       return (
         <div>
           {item.title}
-
         </div>
       )
     })
