@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import HomeRight from './homeright'
+import HomeContent from './Home_content'
 class HomeBody extends Component {
   constructor (props) {
     super(props)
@@ -31,7 +32,6 @@ class HomeBody extends Component {
                 text: response.topic.comments[0].text,
                 username: response.topic.comments[0].author.username
               })
-              console.log(this.state.topCommentsArr)
             })
     let i = 0
     setInterval(() => {
@@ -39,7 +39,6 @@ class HomeBody extends Component {
         text: this.state.topCommentsArr[i]['text'],
         username: this.state.topCommentsArr[i]['author']['username']
       })
-      console.log(this.state.topCommentsArr[i]['text'])
       i++
       if (i === this.state.topCommentsArr.length) {
         i = 0
@@ -82,7 +81,7 @@ class HomeBody extends Component {
                 </div>
               </div>
             </div>
-            <div className='left_content' />
+            <HomeContent />
           </div>
           <div className='right_col'>
             <HomeRight />
