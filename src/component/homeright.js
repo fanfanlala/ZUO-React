@@ -6,10 +6,12 @@ class Homeright extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      data: []
+      data: [],
+      commends: []
     }
   }
   componentDidMount () {
+    // 热门标签接口
     fetch('/api/api/web_hot_tags', {
       method: 'GET'
     })
@@ -17,38 +19,56 @@ class Homeright extends Component {
                 return response.json()
               })
               .then(response => {
-                console.log(response.hot_tags)
                 this.setState({
                   data: response.hot_tags
                 })
               })
-    fetch('/api/api/web_hot_tags', {
+    // 推荐关注接口
+    fetch('/api/api/web_reco_users', {
       method: 'GET'
     })
         .then(response => {
           return response.json()
         })
         .then(response => {
-          console.log(response.hot_tags)
+          console.log(response.reco_users)
           this.setState({
-            data: response.hot_tags
+            commends: response.reco_users
           })
         })
   }
   render () {
-    var dataArray = this.state.data.map(function (item, index) {
+    // 热门标签数据解析
+    var hotArray = this.state.data.map(function (item, index) {
       return (
         <a href='#' key={index.toString()}>{item.content}</a>
       )
     })
+    // 推荐关注数据解析
+    var commendArray = this.state.commends.map(function (item, index) {
+      return (
+        <div className='commend-introduction' key={index.toString()}>
+          <div>
+            <a href='#' className='commend-title'>{item.username}</a>
+            <a href='#' className='commend-content'>{item.introduction}</a>
+          </div>
+          <a href='' className='commend-Img'>
+            <img src={item.cover} width={40} height={40} />
+            <span className='commendImg-mask' />
+          </a>
+        </div>
+      )
+    })
     return (
+      // 热门标签 && 推荐关注
       <div className='hotCommend'>
         <div className='hotTags'>
           <p>热门标签</p>
-          {dataArray}
+          {hotArray}
         </div>
         <div className='commend'>
           <p>推荐关注</p>
+          {commendArray}
         </div>
       </div>
     )

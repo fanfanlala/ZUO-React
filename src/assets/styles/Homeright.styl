@@ -1,3 +1,4 @@
+//热门标签
 .hotCommend
   width 220px
   border 1px solid black
@@ -20,5 +21,55 @@
   color white
   background-color darkgray
 }
-
-
+//推荐关注
+.commend-introduction
+   border-bottom 1px solid #e4e4e5
+   margin-bottom 10px
+.commend-title
+  text-decoration none
+  font-size 14px
+  color #272c2f
+  font-weight 500
+.commend-title:hover
+  color #999a9a
+.commend-introduction::after
+  content ''
+  display table
+  clear both
+.commend-introduction>div,.commend-introduction img
+  float left
+.commend-introduction>div>a{
+  display block
+  margin-bottom 10px
+}
+.commend-content
+  display inline-block
+  width 144px
+  height 33px
+  text-decoration none
+  font-size 12px
+  color #999a9a
+.commend-content:hover
+  color #272c2f
+.commend-introduction img
+  border-radius 4px
+  margin-left 34px
+  transition-duration 0.3s
+  transition-property background-color
+  cursor pointer
+  border 1px solid #e4e4e5
+.commend-Img
+  position relative
+.commendImg-mask
+  width 40px
+  height 40px
+  background-color black
+  opacity 0.3
+  display none
+  border-radius 4px
+  position absolute
+  top 0
+  left -40px
+.commend-Img:hover .commendImg-mask
+  display block
+  cursor pointer
