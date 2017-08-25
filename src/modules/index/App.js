@@ -8,7 +8,6 @@ class App extends Component {
   render () {
     return (
       <div>
-        <a href='depth.html'>点我跳转</a>
         <Home />
       </div>
     )
