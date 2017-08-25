@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import '../../assets/styles/App.styl'
+import '../../assets/styles/depth.styl'
 class App extends Component {
   render () {
     return (
