@@ -6,7 +6,7 @@ import Article from '../../components/depth-more-article'
 class All extends Component {
   render () {
     return (
-      <div id="all">
+      <div id='all'>
         <Read />
         <Article />
       </div>
