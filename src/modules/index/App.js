@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import '../../assets/styles/Homeright.styl'
-import HomeRight from '../../component/homeright'
 import '../../assets/styles/App.styl'
 import '../../assets/styles/Home.styl'
 import '../../assets/styles/HomeBody.styl'
@@ -10,7 +9,6 @@ class App extends Component {
     return (
       <div>
         <Home />
-        <HomeRight />
       </div>
     )
   }
