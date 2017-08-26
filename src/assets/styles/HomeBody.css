@@ -1,0 +1,117 @@
+.zuo_container {
+  background-color: #f6f6f6;
+}
+.zuo_container_content {
+  min-height: 960px;
+  width: 790px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  padding-top: 30px;
+  border: 1px solid #000;
+  overflow: hidden;
+}
+.left_col {
+  width: 540px;
+  padding-bottom: 30px;
+  float: left;
+  border: 1px solid #000;
+}
+.right_col {
+  margin-left: 25px;
+  width: 220px;
+  float: right;
+  border: 1px solid #000;
+}
+.left_topic_cards {
+  margin-bottom: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #000;
+}
+.left_topic_cards:hover .topic_cards_body_comments {
+  box-shadow: 0 5px 8px rgba(0,0,0,0.2);
+}
+.topic_cards_body {
+  min-height: 167px;
+  position: relative;
+  background-size: 100% 100%;
+}
+.topic_cards_body_comments {
+  min-height: 60px;
+  background-color: #fff;
+}
+.topic_cards_body_mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+}
+.topic_cards_info {
+  width: 480px;
+  height: 130px;
+  color: #fff;
+  padding: 18px 30px;
+}
+.topic_cards_info {
+  color: #fff;
+}
+.topic_cards_info_top {
+  position: relative;
+}
+.tip_title {
+  font-size: 14px;
+}
+.tip_divider {
+  width: 20px;
+  height: 5px;
+  border-radius: 6px;
+  background-color: #f8d440;
+  margin-top: 10px;
+}
+.topic_cards_info_middle {
+  font-size: 22px;
+  line-height: 28px;
+  margin-top: 30px;
+  margin-bottom: 18px;
+  position: relative;
+}
+.topic_cards_info_middle img {
+  width: 24px;
+  height: 24px;
+  vertical-align: top;
+  margin-left: 7px;
+}
+.topic_cards_info_mottom {
+  color: rgba(255,255,255,0.6);
+  position: relative;
+}
+.topic_cards_info_mottom span {
+  font-size: 14px;
+  margin-right: 10px;
+}
+.topic_cards_body_comments_text {
+  padding: 18px 20px;
+  word-break: break-all;
+  font-size: 13px;
+  line-height: 22px;
+  height: 44px;
+  overflow: hidden;
+}
+.comments_username {
+  color: #272c2f;
+  font-weight: 500;
+  text-decoration: none;
+}
+.comments_text {
+  color: #999a9a;
+  height: 40px;
+  overflow: hidden;
+}
+.comments_text a {
+  color: #272c2f;
+  font-weight: 500;
+  text-decoration: none;
+}

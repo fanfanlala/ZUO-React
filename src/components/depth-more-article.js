@@ -22,18 +22,12 @@ class Article extends Component {
     document.body.onscroll = this.scroll
   }
   scroll = () => {
-    // console.log('页面滚轮' + document.body.offsetHeight)
-    console.log('页面高度' + document.body.scrollHeight)
-    console.log('滚动距离' + document.body.scrollTop)
-    // console.log(document.body.offsetHeight)
-    // console.log(document.body.clientHeight)
-    console.log(document.body.scrollHeight)
-    // console.log(document.body.offsetHeight - document.body.clientHeight)
-    // if (document.body.scrollTop === (document.body.offsetHeight - document.body.clientHeight)) {
-    //   console.log('11111111111')
-    // }
-    if (document.body.scrollTop) {
+    // console.log('页面高度' + document.documentElement.clientHeight)
+    // console.log('滚动距离' + document.body.scrollTop)
+    // console.log(document.body.scrollHeight)
 
+    if (document.body.scrollHeight * 0.9 < (document.body.scrollTop + document.documentElement.clientHeight)) {
+      console.log('已经到底')
     }
   }
   render() {
@@ -57,6 +51,7 @@ class Article extends Component {
         <div id='more-content'>
           {dataArray}
         </div>
+        <div id="returnTop"><a href="#outTier"><img src={require('../assets/images/返回顶部.png')} alt="" /></a></div>
       </div>
     )
   }

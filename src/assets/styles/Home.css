@@ -1,0 +1,138 @@
+.headWrap {
+  width: 100%;
+  height: 60px;
+  background-color: #262c2f;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+.head_left>img {
+  height: 60px;
+  width: auto;
+  margin-left: 25px;
+  position: absolute;
+  left: 25px;
+  cursor: pointer;
+}
+.head_middle {
+  width: 433px;
+  margin: 0 auto;
+}
+.head_middle ul {
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 15px;
+}
+.head_middle ul li {
+  margin: 0;
+  padding: 0;
+  height: 24px;
+  display: inline-block;
+  margin-right: 30px;
+  line-height: 24px;
+}
+.head_middle ul li a {
+  color: #9ea0a5;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+#head_firstPage>a {
+  color: #fff;
+}
+.head_control_wrap {
+  margin-top: 15px;
+  float: right;
+  background-color: #464b4d;
+  color: #757575;
+  position: relative;
+}
+.head_control {
+  width: 188px;
+  height: 18px;
+  padding: 6px 30px 6px 10px;
+  background-color: #464b4d;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  outline: none;
+}
+.head_control_wrap>img {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 8px;
+  margin-top: 4px;
+  cursor: pointer;
+}
+.head_right {
+  position: absolute;
+  right: 20px;
+  width: 146px;
+  margin-top: 19px;
+}
+.head_right>div {
+  float: left;
+  color: #9ea0a5;
+  margin-left: 30px;
+  font-size: 14px;
+}
+.head_right img {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+.zuo-welcome {
+  position: relative;
+  background-image: url("../images/establish_BG.png");
+  background-repeat: repeat;
+  background-color: #eaeced;
+  margin-top: 60px;
+}
+.welcome_body {
+  width: 790px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.welcome_body h1 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 700;
+  color: #272c2f;
+  margin-bottom: 20px;
+}
+.weclome_subtip {
+  margin-top: 15px;
+  margin-bottom: 18px;
+  font-size: 16px;
+  color: #5d6c75;
+}
+.createZuo {
+  width: 200px;
+  height: 44px;
+  border: 1px solid transparent;
+  outline: none;
+  font-size: 16px;
+  background-color: #1fd7e2;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.welcome_close {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 35px;
+  right: 30px;
+  cursor: pointer;
+}
+.welcome_close img {
+  width: 100%;
+  height: 100%;
+}

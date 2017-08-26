@@ -46,7 +46,6 @@ class HomeBody extends Component {
     }, 30000)
   }
   componentDidUpdate () {
-    console.log(this.state.username)
     // document.getElementsByClassName('topic_cards_body_comments_text')[0].innerHTML = this.state.username + ':' + this.state.text
     document.getElementsByClassName('comments_username')[0].innerHTML = this.state.username + ':'
     document.getElementsByClassName('comments_text')[0].innerHTML = this.state.text

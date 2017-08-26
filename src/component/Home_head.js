@@ -22,7 +22,7 @@ class HomeHead extends Component {
             </div>
           </div>
           <div className='head_right'>
-            <div><i><img src={require('../assets/images/登录.png')} /></i>登录</div>
+            <div><i className='head_login_logo'><img src={require('../assets/images/登录.png')} /></i>登录</div>
             <div>注册</div>
           </div>
         </div>
