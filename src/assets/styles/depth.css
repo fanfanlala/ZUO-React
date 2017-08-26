@@ -5,6 +5,9 @@
 body {
   background-color: #f6f6f6;
 }
+#all {
+  margin-top: 80px;
+}
 #outTier {
   width: 930px;
   height: 450px;

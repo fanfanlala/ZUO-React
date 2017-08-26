@@ -19,7 +19,6 @@ class HotTags extends Component {
         return response.json()
       })
       .then(response => {
-        console.log(response.pgcs)
         this.setState({
           hotTitle: response.pgcs
         })
