@@ -31,7 +31,6 @@ class Homeright extends Component {
           return response.json()
         })
         .then(response => {
-          console.log(response.reco_users)
           this.setState({
             commends: response.reco_users
           })

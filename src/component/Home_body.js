@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import HomeRight from './homeright'
+import HomeContent from './Home_content'
 class HomeBody extends Component {
   constructor (props) {
     super(props)
@@ -9,7 +10,9 @@ class HomeBody extends Component {
       topicCardsTitle: '',
       topicStar: '',
       topicComment: '',
-      topCommentsArr: ''
+      topCommentsArr: '',
+      text: '',
+      username: ''
     }
   }
   componentDidMount () {
@@ -25,9 +28,28 @@ class HomeBody extends Component {
                 topicCardsTitle: response.topic.title,
                 topicStar: response.topic.collect_count,
                 topicComment: response.topic.comment_count,
-                topCommentsArr: response.topic.comments
+                topCommentsArr: response.topic.comments,
+                text: response.topic.comments[0].text,
+                username: response.topic.comments[0].author.username
               })
             })
+    let i = 0
+    setInterval(() => {
+      this.setState({
+        text: this.state.topCommentsArr[i]['text'],
+        username: this.state.topCommentsArr[i]['author']['username']
+      })
+      i++
+      if (i === this.state.topCommentsArr.length) {
+        i = 0
+      }
+    }, 30000)
+  }
+  componentDidUpdate () {
+    console.log(this.state.username)
+    // document.getElementsByClassName('topic_cards_body_comments_text')[0].innerHTML = this.state.username + ':' + this.state.text
+    document.getElementsByClassName('comments_username')[0].innerHTML = this.state.username + ':'
+    document.getElementsByClassName('comments_text')[0].innerHTML = this.state.text
   }
   render () {
     return (
@@ -54,10 +76,12 @@ class HomeBody extends Component {
               </div>
               <div className='topic_cards_body_comments'>
                 <div className='topic_cards_body_comments_text'>
-                  { this.createComment }
+                  <a href='#' className='comments_username'>{this.state.username}</a>
+                  <span className='comments_text'>{this.state.text}</span>
                 </div>
               </div>
             </div>
+            <HomeContent />
           </div>
           <div className='right_col'>
             <HomeRight />

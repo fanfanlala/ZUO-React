@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import HomeHead from '../component/Home_head'
 class Read extends Component {
   constructor (props) {
     super(props)
@@ -42,6 +43,7 @@ class Read extends Component {
     })
     return (
       <div id='outTier'>
+        <HomeHead />
         <p id='read-headline'>推荐阅读</p>
         <div id='read-headline-img'>
           {dataArray}
