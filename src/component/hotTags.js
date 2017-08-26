@@ -3,39 +3,38 @@
  */
 import React, {Component} from 'react'
 class HotTags extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      hotTitle: [],
-      hotContent: []
+      hotDate: []
     }
   }
-  componentDidMount () {
+
+  componentDidMount() {
     // 热门标签二级页面的title接口
-    fetch('/api/api/search/articles?q=Long+Life+Design+Award', {
-      method: 'Get'
-    })
-      .then(response => {
-        return response.json()
+    var portArr = ['', '/ariticles', '/users', '/posts']
+
+    function getData(port) {
+      fetch('/api/api/search' + port + '?q=Long+Life+Design+Award', {
+        method: 'get'
       })
-      .then(response => {
-        console.log(response.pgcs)
-        this.setState({
-          hotTitle: response.pgcs
+        .then(response => {
+          return response.json()
         })
-      })
+        .then(response => {
+          let hotTitle = response.users
+          let articles = response.pgcs
+          let posts = response.posts
+          let empty = response.query
+        })
+    }
   }
-  render () {
-    // 热门标签二级页面的title数据解析
-    var hotTitleArr = this.state.hotTitle.map(function (item, index) {
-      return (
-        <div>{item.sceneTagName}</div>
-      )
-    })
+
+  render() {
     return (
       <div>
         <div>
-          {hotTitleArr}
+          dhfjkh
         </div>
       </div>
     )

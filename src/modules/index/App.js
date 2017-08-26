@@ -9,6 +9,8 @@ class App extends Component {
     return (
       <div>
         <a href='depth.html'>点我跳转</a>
+        <br />
+        <a href="about.html">测试</a>
         <Home />
       </div>
     )
