@@ -1,6 +1,82 @@
 import React, {Component} from 'react'
 class HomeContent extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      data: []
+    }
+  }
+  componentDidMount () {
+    fetch('api/api/posts?design=&scene=全部', {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.posts
+        })
+      })
+  }
   render () {
+    var arr = []
+    var tagArr = []
+    for (let i = 0; i < this.state.data.length; i++) {
+      tagArr[i] = []
+      for (let j = 0; j < this.state.data[i].tags.length; j++) {
+        if (this.state.data[i].tags.length === 0) {
+          return
+        } else {
+          tagArr[i].push(
+            <a>
+              <i className='icon-tag' style={{backgroundColor: 'gray'}} />
+              <span className='icon-tag-name'>{this.state.data[i]['tags'][j]}</span>
+            </a>
+          )
+          console.log(this.state.data[i]['tags'][j])
+        }
+      }
+      arr.push(
+        <div className='zuo-feed'>
+          <div className='zuo-feed_top'>
+            <div className='zuo-feed-top-inner'>
+              <div className='owner-info'>
+                <div className='owner-avatar'><img src={this.state.data[i]['owner'].avatar} /></div>
+                <div className='owner-name'>
+                  <a href='#'>{this.state.data[i]['owner'].username}</a>
+                </div>
+              </div>
+              <div className='feed-right-actions'>
+                <span className='feed-right-actions-icon'><img src={require('../assets/images/选中-实心-圆形.png')} /></span>
+                <span className='feed-like-count'>{this.state.data[i]['likeCount']}个赞同</span>
+                <span className='feed-share-toggle'><img src={require('../assets/images/转发.png')} /></span>
+                <span className='icon-iconhomemore'><img src={require('../assets/images/更多2.png')} /></span>
+              </div>
+            </div>
+          </div>
+          <div className='zuo-feed_body'>
+            <div className='feed-body'><img className='feed-body-img' src={this.state.data[i]['postImage'].url} /></div>
+            <div className='feed-content'>
+              <div className='feed-text'>{this.state.data[i]['postDescription']}</div>
+              <div className='feed-tags'>
+                <a>
+                  <i className='icon-tag' style={{backgroundColor: this.state.data[i]['sceneTag'].color}} />
+                  <span className='icon-tag-name'>{this.state.data[i]['sceneTag'].name}</span>
+                  { tagArr[i] }
+                </a>
+              </div>
+              <div className='feed-info'>
+                <i className='feed-info-icon-message'><img src={require('../assets/images/信息.png')} /></i>
+                <span>{this.state.data[i].commentedCount}条评论</span>
+                <ul className='comment-list' />
+              </div>
+              <div className='add-comment'>/</div>
+            </div>
+          </div>
+        </div>
+      )
+    }
     return (
       <div>
         <div className='content_wrap'>
@@ -22,6 +98,9 @@ class HomeContent extends Component {
                 <span className='feed_right_font'>坏设计</span>
               </div>
             </div>
+          </div>
+          <div className='content_wrap_content'>
+            { arr }
           </div>
         </div>
       </div>
