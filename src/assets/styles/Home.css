@@ -41,9 +41,6 @@
   text-decoration: none;
   cursor: pointer;
 }
-#head_firstPage>a {
-  color: #fff;
-}
 .head_control_wrap {
   margin-top: 15px;
   float: right;

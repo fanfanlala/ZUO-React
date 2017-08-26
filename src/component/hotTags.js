@@ -1,6 +1,3 @@
-/**
- * Created by dllo on 17/8/25.
- */
 import React, {Component} from 'react'
 class HotTags extends Component {
   constructor (props) {
