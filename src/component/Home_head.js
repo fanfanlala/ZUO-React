@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 class HomeHead extends Component {
-  goShenDu = () => {
-    this.style.color = 'white'
+  goShenDu = (ev) => {
+    ev.target.style.color = 'white'
   }
   render () {
     return (
@@ -13,7 +13,7 @@ class HomeHead extends Component {
           <div className='head_middle'>
             <ul>
               <li id='head_firstPage'><a href='/'>首页</a></li>
-              <li className='head_depth'><a href='depth.html' onClick={this.goShenDu}>深度</a></li>
+              <li id="head_secondPage"><a href='depth.html' onClick={this.goShenDu}>深度</a></li>
               <li className='downLoad_app'><a>下载App</a></li>
             </ul>
             <div className='head_control_wrap'>

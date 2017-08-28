@@ -34,7 +34,6 @@ class HomeContent extends Component {
               <span className='icon-tag-name'>{this.state.data[i]['tags'][j]}</span>
             </a>
           )
-          console.log(this.state.data[i]['tags'][j])
         }
       }
       arr.push(

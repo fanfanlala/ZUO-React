@@ -10,6 +10,7 @@ class App extends Component {
     return (
       <div>
         <Home />
+        <a href='about.html'>点我测试</a>
       </div>
     )
   }
