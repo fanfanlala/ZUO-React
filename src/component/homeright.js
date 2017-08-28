@@ -40,7 +40,7 @@ class Homeright extends Component {
     // 热门标签数据解析
     var hotArray = this.state.data.map(function (item, index) {
       return (
-        <a href='#' key={index.toString()}>{item.content}</a>
+        <a href={'about.html?hotName=' + item.content} key={index.toString()}>{item.content}</a>
       )
     })
     // 推荐关注数据解析

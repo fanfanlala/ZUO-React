@@ -1,3 +1,11 @@
+.left
+  float left
+.right
+  float right
+.clearFloat::after
+  content ''
+  display table
+  clear both
 //热门标签
 .hotCommend
   width 220px
@@ -82,6 +90,8 @@
   width 100%
   height 120px
   background-color rgb(255,255,255)
+  display inline-block
+  margin-right 20px
 .hotSearch-title>img
   vertical-align middle
 .hotSearch-title span
@@ -105,6 +115,9 @@
   color #a6a7a7
   padding-left 14px
 //热门标签二级页面--相关深度阅读
+.hotArticle
+  display inline-block
+  margin-right 13px
 .hotArticle-title
   display inline-block
   height 88px
@@ -114,6 +127,7 @@
   width 930px
   text-align center
 .hotArticle-Img
+   display inline-block
    width 219px
    height 180px
    border-radius  4px
@@ -151,3 +165,130 @@
   position absolute
   left:0
   top:148px
+//  相关ZUO
+.hotZuo
+  width 219px
+  background-color white
+  border-radius 4px
+  margin 0 10px 20px 0
+  display inline-block
+.hotZuo-title
+  color #a6a7a7
+  padding 10px
+  font-size 14px
+.hotZuo-title a
+  color black
+  text-decoration none
+  margin-left 10px
+  font-size 14px
+.hotZuo-tags
+  margin 10px auto
+  width 199px
+  height 20px
+  overflow hidden
+.hotZuo-tags div
+  display inline-block
+  width 8px
+  height 8px
+  border-radius 50%
+  background-color lightgray
+.hotZuo-tags a
+  text-decoration none
+  color #a6a7a7
+  font-size 14px
+  margin 0 10px
+.hotZuo-tags a:hover
+  color black
+.hotZuo-line
+  margin 20px auto
+  width 199px
+  height 1px
+  background-color #a6a7a7
+  opacity 0.4
+.hotZuo-Img
+  width 219px
+  height 219px
+  overflow hidden
+  position relative
+.hotZuo-mark
+  width 219px
+  height 219px
+  background-color black
+  opacity 0.4
+  position absolute
+  top 0
+  left 0
+  display none
+.hotZuo-Img:hover img
+  transform scale(1.2)
+  transition all 0.3s
+.hotZuo-Img:hover .hotZuo-mark
+  display block
+  transition all 0.3s
+.hotZuo-icon
+  width 199px
+  margin 10px auto
+.hotZuo-icon-round
+  display inline-block
+  width 18px
+  height 18px
+  border-radius 50%
+  border 1px solid #E1E2E2
+  text-align center
+  line-height 18px
+.hotZuo-icon>a
+  text-decoration none
+  display inline-block
+  line-height 18px
+  color #a6a7a7
+  font-size 14px
+.hotZuo-icon a:nth-child(2),.hotZuo-icon a:nth-child(4)
+  margin-right 30px
+  margin-left 10px
+.hotZuo-icon-round img
+  margin-top 1px
+// 相关用户
+.hotTags-user
+  display inline-block
+  width 219px
+  background-color white
+  border-radius 4px
+  margin-right 20px
+  padding 10px 0
+.hotTags-user img
+  border-radius 50%
+.hotTags-user a
+  text-decoration none
+  font-size 15px
+  color #a6a7a7
+  font-weight 400
+.hotTags-user-title
+  border-bottom 1px solid #E1E2E2
+  padding-bottom 10px
+  margin-bottom 10px
+.hotTags-user-title>a:nth-child(1)
+  width 110px
+  height 21px
+  overflow hidden
+.hotTags-user-title,.hotTags-user-Img
+  width 199px
+  margin 0 auto
+.hotTags-user-Img
+  margin-top 10px
+.hotTags-user>.hotTags-user-title>a:nth-child(1)
+  color black
+.hotTags-user>.hotTags-user-title>a:nth-child(2)
+  text-align right
+  padding 1px 8px
+  background-color #1fd7e2
+  color white
+  border-radius 4px
+  margin-left 10px
+.hotTags-user-count
+  width 30px
+  text-align center
+.hotTags-user-count>a
+  display block
+.hotTags-user-Img>a:nth-child(1)
+  display inline-block
+  margin-right 46px
