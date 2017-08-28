@@ -3,12 +3,15 @@ class HomeHead extends Component {
   goShenDu = (ev) => {
     ev.target.style.color = 'white'
   }
+
   render () {
     return (
       <div>
         <div className='headWrap'>
           <div className='head_left'>
-            <img src={require('../assets/images/zuoLogo.png')} />
+            <a href="/">
+              <img src={require('../assets/images/zuoLogo.png')} />
+            </a>
           </div>
           <div className='head_middle'>
             <ul>
