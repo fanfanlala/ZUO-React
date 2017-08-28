@@ -38,6 +38,13 @@ class HomeContent extends Component {
       }
       arr.push(
         <div className='zuo-feed'>
+          <a className='feed-halo' style={{top: this.state.data[i].haloCenterRatio.height_ratio * 78 + '%', left: this.state.data[i].haloCenterRatio.width_ratio * 100 + '%'}}>
+            <div className='animated-pop' />
+            <div className='halo-text-box'>
+              <span className='halo-text-big'>赞同</span><br />
+              <span className='halo-text-small'>这个态度</span>
+            </div>
+          </a>
           <div className='zuo-feed_top'>
             <div className='zuo-feed-top-inner'>
               <div className='owner-info'>
@@ -55,7 +62,7 @@ class HomeContent extends Component {
             </div>
           </div>
           <div className='zuo-feed_body'>
-            <div className='feed-body'><img className='feed-body-img' src={this.state.data[i]['postImage'].url} /></div>
+            <div className='feed-body'><img className='feed-body-img' src={this.state.data[i]['postImage'].url} /><div className='feed-meng' /></div>
             <div className='feed-content'>
               <div className='feed-text'>{this.state.data[i]['postDescription']}</div>
               <div className='feed-tags'>
@@ -70,7 +77,11 @@ class HomeContent extends Component {
                 <span>{this.state.data[i].commentedCount}条评论</span>
                 <ul className='comment-list' />
               </div>
-              <div className='add-comment'>/</div>
+              <div className='add-comment'>
+                <div className='add-body'>
+                  <input type='text' placeholder='写下你的评论...' className='new-comment' />
+                </div>
+              </div>
             </div>
           </div>
         </div>
