@@ -1,6 +1,6 @@
 .feed_list_bar {
   font-size: 15px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   margin-bottom: 30px;
 }
 .feed_list_bar .feed_list_bar_left {
