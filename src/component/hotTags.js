@@ -1,6 +1,3 @@
-/**
- * Created by dllo on 17/8/25.
- */
 import React, {Component} from 'react'
 import '../assets/styles/Homeright.styl'
 import searchImg from '../assets/images/搜索.png'
@@ -133,15 +130,8 @@ class HotTags extends Component {
         <div className='hotArticle-title'>相关ZUO</div>
       </div>,
       this.state.postsDate.map(function (item, index) {
-        console.log(item.tags.length)
-        // function isTags (item) {
-        //   for (var i in item) {
-        //     if (i === 'tags') {
-        //       return true
-        //     }
-        //   }
-        // }
-        var tagsArr = item.tags.length !== 0 ? item.tags[0] : ''
+        var array = item.tags || []
+        var tagsArr = array.length !== 0 ? item.tags[0] : ''
         return (
           <div className='hotZuo'>
             <div className='hotZuo-title'>

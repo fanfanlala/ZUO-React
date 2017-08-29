@@ -39,6 +39,23 @@ i
   z-index: 400;
   position: relative;
   border 1px solid black
+.zuo-feed:hover .feed-meng
+  opacity .3
+.zuo-feed:hover .feed-halo
+  transform scale(1.1)
+  border 3px solid #1fd7e2
+.zuo-feed:hover .halo-text-box
+  opacity 1
+.feed-meng
+  width 100%
+  height 100%
+  position absolute
+  top 0
+  left 0
+  background-color black
+  z-index 1100
+  opacity 0
+  transition all .3s
 .zuo-feed_top
   padding: 10px 18px;
   height: 40px;
@@ -50,6 +67,7 @@ i
       float left
       height 100%
       .owner-avatar
+        position relative
         height 100%
         float: left
         img
@@ -84,6 +102,8 @@ i
   font-size: 14px;
   line-height: 20px;
   color: #959697;
+.feed-body
+  position relative
 .feed-share-toggle
   display inline-block
   width 17px
@@ -145,3 +165,62 @@ i
   img
     width 100%
     height 100%
+.add-body
+  padding-left: 25px;
+  padding-right: 25px;
+.new-comment
+  width: 100%;
+  outline: 0;
+  border: none;
+  padding: 18px 10px 18px 2px;
+  font-size: 14px;
+  line-height: 20px;
+.feed-halo
+  display block
+  position absolute
+  width: 120px;
+  height: 120px;
+  margin-top: -60px;
+  margin-left: -60px;
+  z-index: 1200;
+  border: 2px solid #1fd7e2;
+  border-radius 50%
+  transition all .3s
+.halo-text-big
+  font-size 24px
+  font-weight 500
+  color: white
+.halo-text-small
+  color: white
+.halo-text-box
+  width 70px
+  height 56px
+  margin: 0 auto;
+  margin-top: -95px;
+  text-align: center;
+  opacity 0
+.animated-pop
+  border: 1px solid #1fd7e2;
+  border-radius 50%
+  background-color: rgba(31,217,255,.2)
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  animation animatepop 1s infinite
+
+
+
+@keyframes animatepop
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+

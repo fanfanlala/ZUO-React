@@ -3,7 +3,8 @@ class Article extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: []
+      data: [],
+      color: '1'
     }
   }
 
@@ -20,12 +21,14 @@ class Article extends Component {
         })
       })
     document.body.onscroll = this.scroll
+    window.close()
   }
+  // 返回顶部的点击事件
+  click = () => {
+    document.body.scrollTop = 0
+  }
+  // 滚轮到底部加载新的数据
   scroll = () => {
-    // console.log('页面高度' + document.documentElement.clientHeight)
-    // console.log('滚动距离' + document.body.scrollTop)
-    // console.log(document.body.scrollHeight)
-
     if (document.body.scrollHeight * 0.9 < (document.body.scrollTop + document.documentElement.clientHeight)) {
       console.log('已经到底')
     }
@@ -51,7 +54,7 @@ class Article extends Component {
         <div id='more-content'>
           {dataArray}
         </div>
-        <div id="returnTop"><a href="#outTier"><img src={require('../assets/images/返回顶部.png')} alt="" /></a></div>
+        <div id="returnTop" onClick={this.click}><a href="#"><img src={require('../assets/images/返回顶部.png')} alt="" /></a></div>
       </div>
     )
   }
