@@ -19,6 +19,7 @@ class Article extends Component {
       })
     })
     document.body.onscroll = this.scroll
+    window.close()
   }
 
   // 返回顶部的点击事件

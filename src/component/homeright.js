@@ -40,7 +40,7 @@ class Homeright extends Component {
     // 热门标签数据解析
     var hotArray = this.state.data.map(function (item, index) {
       return (
-        <a href='#' key={index.toString()}>{item.content}</a>
+        <a href={'about.html?hotName=' + item.content} key={index.toString()}>{item.content}</a>
       )
     })
     // 推荐关注数据解析
@@ -48,10 +48,10 @@ class Homeright extends Component {
       return (
         <div className='commend-introduction' key={index.toString()}>
           <div>
-            <a href='#' className='commend-title'>{item.username}</a>
-            <a href='#' className='commend-content'>{item.introduction}</a>
+            <a href={'commend.html?commendPort=' + item.zuoId} className='commend-title'>{item.username}</a>
+            <a href={'commend.html?commendPort=' + item.zuoId} className='commend-content'>{item.introduction}</a>
           </div>
-          <a href='' className='commend-Img'>
+          <a href={'commend.html?commendPort=' + item.zuoId} className='commend-Img'>
             <img src={item.cover} width={40} height={40} />
             <span className='commendImg-mask' />
           </a>
