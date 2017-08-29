@@ -48,10 +48,10 @@ class Homeright extends Component {
       return (
         <div className='commend-introduction' key={index.toString()}>
           <div>
-            <a href='#' className='commend-title'>{item.username}</a>
-            <a href='#' className='commend-content'>{item.introduction}</a>
+            <a href={'commend.html?commendPort=' + item.zuoId} className='commend-title'>{item.username}</a>
+            <a href={'commend.html?commendPort=' + item.zuoId} className='commend-content'>{item.introduction}</a>
           </div>
-          <a href='' className='commend-Img'>
+          <a href={'commend.html?commendPort=' + item.zuoId} className='commend-Img'>
             <img src={item.cover} width={40} height={40} />
             <span className='commendImg-mask' />
           </a>

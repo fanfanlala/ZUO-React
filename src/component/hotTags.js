@@ -15,7 +15,6 @@ class HotTags extends Component {
   componentDidMount () {
     // 搜索
     let path = window.location.href.split('=')[1]
-    console.log(path)
     fetch('/api/api/search?q=' + path, {
       method: 'GET'
     })
