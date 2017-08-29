@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import HomeBody from './Home_body'
 import HomeHead from './Home_head'
+import HomeFoot from './Home_footer'
 class Home extends Component {
   closeWelcome = () => {
     var zuoWelcome = document.getElementsByClassName('zuo-welcome')[0]
@@ -28,6 +29,7 @@ class Home extends Component {
             </div>
           </div>
           <HomeBody />
+          <HomeFoot />
         </div>
       </div>
     )

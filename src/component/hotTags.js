@@ -93,7 +93,9 @@ class HotTags extends Component {
               <a href='#' className='right'>关注</a>
             </div>
             <div className='hotTags-user-Img clearFloat'>
-              <a href='#' className='left'><img src={item.avatar.length > 0 ? item.avatar : require('../assets/images/avatar.jpg')} width={46} height={46} /></a>
+              <a href='#' className='left'><img
+                src={item.avatar.length > 0 ? item.avatar : require('../assets/images/avatar.jpg')} width={46}
+                height={46} /></a>
               <div className='hotTags-user-count left'>
                 <a href='#'>{item.all_createposts_count}</a>
                 <a href='#'>发布</a>
@@ -108,28 +110,28 @@ class HotTags extends Component {
       })]
     userArr = this.state.usersDate.length > 0 ? userArr : ''
     // 相关深度阅读数据解析
-    var articlesArr = [<div className='hotTagsContainer'><span className='hotArticle-title'>相关深度阅读</span></div>, this.state.articlesDate.map(function (item, index) {
+    var articlesArr = [<div className='hotTagsContainer'><span className='hotArticle-title'>相关深度阅读</span>
+    </div>, this.state.articlesDate.map(function (item, index) {
       return (
         <div className='hotArticle'>
-          <div className='hotArticle-Img'>
-            <a href='#'>
-              <img src={item.banner} width={219} height={334} />
-            </a>
-            <div className='hotArticle-mask' />
-            <a href='#' className='hotArticle-content'>{item.title}</a>
-            <p>{item.summary}</p>
+          <div className='hotTagsContainer hotArticle'>
+            <span className='hotArticle-title'>相关深度阅读</span>
+            <div className='hotArticle-Img'>
+              <a href='#'>
+                <img src={item.banner} width={219} height={334} />
+              </a>
+              <div className='hotArticle-mask' />
+              <a href='#' className='hotArticle-content'>{item.title}</a>
+              <p>{item.summary}</p>
+            </div>
           </div>
         </div>
       )
     })]
     articlesArr = this.state.articlesDate > 0 ? articlesArr : ''
-    // 相关ZUO数据解析
     let postArr = [
-      <div className='hotTagsContainer'>
-        <div className='hotArticle-title'>相关ZUO</div>
-      </div>,
-      this.state.postsDate.map(function (item, index) {
-        var array = item.tags || []
+      <div className='hotTagsContainer'><span className='hotArticle-title'>相关ZUO</span></div>, this.state.postsDate.map(function (item, index) {
+        const array = item.tags || []
         var tagsArr = array.length !== 0 ? item.tags[0] : ''
         return (
           <div className='hotZuo'>
