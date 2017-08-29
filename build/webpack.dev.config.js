@@ -22,12 +22,12 @@ module.exports = merage(baseWebpackConfig, {
     //   filename: 'index.html',
     //   template: './src/modules/index/index.html',
     //   excludeChunks:[
-    //     {about:'./src/modules/about/about.html'}
+    //     {about:'./src/modules/about/hotTags.html'}
     //   ]
     // }),
     // new HTMLWebpackPlugin({
-    //   filename: 'about.html',
-    //   template: './src/modules/about/about.html',
+    //   filename: 'hotTags.html',
+    //   template: './src/modules/about/hotTags.html',
     //   excludeChunks:[
     //     {index:'./src/modules/index/index.html'}
     //   ]
@@ -46,13 +46,13 @@ module.exports = merage(baseWebpackConfig, {
 
 // .src/modules/index/index.js
 // .src/modules/index/index.html
-// .src/modules/about/about.html
+// .src/modules/about/hotTags.html
 
 // new HTMLWebpackPlugin({
 //   filename: 'index.html',
 //   template: './src/modules/index/index.html',
 //   excludeChunks:[
-//     {about:'./src/modules/about/about.html'}
+//     {about:'./src/modules/about/hotTags.html'}
 //   ]
 // })
 const htmlPaths = utils.getEntries('./src/modules/**/*.html')
