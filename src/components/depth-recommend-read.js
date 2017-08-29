@@ -1,27 +1,27 @@
 import React, {Component} from 'react'
 import HomeHead from '../component/Home_head'
 class Read extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       data: []
     }
   }
-  componentDidMount () {
+  componentDidMount() {
     fetch('/api/api/hot_articles', {
       method: 'GET'
     })
-            .then(response => {
-              return response.json()
-            })
-            .then(response => {
-              this.setState({
-                data: response.hot_articles
-              })
-            })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.hot_articles
+        })
+      })
   }
 
-  render () {
+  render() {
     const dataArray = this.state.data.map(function (item, index) {
       var color = item.sceneTagColor
       return (
