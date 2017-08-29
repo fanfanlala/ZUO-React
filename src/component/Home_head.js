@@ -1,5 +1,11 @@
 import React, {Component} from 'react'
 class HomeHead extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+
+    }
+  }
   goShenDu = (ev) => {
     ev.target.style.color = 'white'
   }
