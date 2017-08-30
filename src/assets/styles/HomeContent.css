@@ -48,7 +48,12 @@ i img {
   background-color: #fff;
   z-index: 400;
   position: relative;
-  border: 1px solid #000;
+}
+.zuo-feed:hover .feed-content {
+  box-shadow: 0 5px 10px #808080;
+}
+.zuo-feed:hover .zuo-feed_top {
+  box-shadow: 0 -2px 10px #808080;
 }
 .feed-body:hover .feed-meng {
   opacity: 0.3;

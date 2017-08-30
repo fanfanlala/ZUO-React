@@ -8,25 +8,21 @@
   position: relative;
   display: flex;
   padding-top: 30px;
-  border: 1px solid #000;
 }
 .left_col {
   width: 540px;
   padding-bottom: 30px;
   float: left;
-  border: 1px solid #000;
 }
 .right_col {
   margin-left: 25px;
   width: 220px;
   float: right;
-  border: 1px solid #000;
 }
 .left_topic_cards {
   margin-bottom: 30px;
   border-radius: 4px;
   cursor: pointer;
-  border: 1px solid #000;
 }
 .left_topic_cards:hover .topic_cards_body_comments {
   box-shadow: 0 5px 8px rgba(0,0,0,0.2);

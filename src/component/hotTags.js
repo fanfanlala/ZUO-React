@@ -129,6 +129,7 @@ class HotTags extends Component {
       )
     })]
     articlesArr = this.state.articlesDate > 0 ? articlesArr : ''
+    // 相关ZUO数据解析
     let postArr = [
       <div className='hotTagsContainer'><span className='hotArticle-title'>相关ZUO</span></div>, this.state.postsDate.map(function (item, index) {
         const array = item.tags || []

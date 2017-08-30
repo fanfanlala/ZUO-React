@@ -40,8 +40,9 @@ class Hotcommend extends Component {
   }
   scroll = () => {
     console.log(document.body.scrollTop)
-    if (document.body.scrollTop === 1267) {
+    if (document.body.scrollTop >= 1267) {
       console.log('到底了')
+      console.log(this.state.postsContent)
     }
   }
   render () {
