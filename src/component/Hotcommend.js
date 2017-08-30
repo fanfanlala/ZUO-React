@@ -4,6 +4,8 @@
 import React, {Component} from 'react'
 import '../assets/styles/Home.styl'
 import '../assets/styles/foot+downloadApp.styl'
+import HomeHead from '../component/Home_head'
+import HomeFooter from '../component/Home_footer'
 class Hotcommend extends Component {
   constructor (props) {
     super(props)
@@ -41,7 +43,6 @@ class Hotcommend extends Component {
     document.body.onscroll = this.scroll
   }
   scroll = () => {
-    if (document.body.scrollTop >= 1267) {
     if (document.body.scrollTop + document.documentElement.clientHeight === document.body.scrollHeight && document.body.scrollTop > 1000) {
       let commentPaths = window.location.href.split('=')[1]
       const newContentArr = this.state.postsContent
