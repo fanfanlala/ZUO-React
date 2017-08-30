@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-class userHTTP extends Component {
+class loginRegister extends Component {
   render () {
     return (
       <div id='userHttp'>
@@ -9,4 +9,4 @@ class userHTTP extends Component {
     )
   }
 }
-export default userHTTP
+export default loginRegister
