@@ -2,6 +2,8 @@
  * Created by dllo on 17/8/29.
  */
 import React, {Component} from 'react'
+import '../assets/styles/Home.styl'
+import '../assets/styles/foot+downloadApp.styl'
 class Hotcommend extends Component {
   constructor (props) {
     super(props)
@@ -39,12 +41,27 @@ class Hotcommend extends Component {
     document.body.onscroll = this.scroll
   }
   scroll = () => {
-    console.log(document.body.scrollTop)
     if (document.body.scrollTop >= 1267) {
-      console.log('到底了')
-      console.log(this.state.postsContent)
+    if (document.body.scrollTop + document.documentElement.clientHeight === document.body.scrollHeight && document.body.scrollTop > 1000) {
+      let commentPaths = window.location.href.split('=')[1]
+      const newContentArr = this.state.postsContent
+      const newPath = newContentArr[newContentArr.length - 1].createdAt
+      fetch('/api/api/post_by_user?after=' + newPath + '&zuoId=' + commentPaths, {
+        method: 'Get'
+      })
+        .then(response => {
+          return response.json()
+        })
+        .then(response => {
+          if (!response.has_text) {
+            this.setState({
+              postsContent: this.state.postsContent.concat(response.posts)
+            })
+          }
+        })
     }
   }
+
   render () {
     // 推荐关注二级页面的title数据解析
     let userArr = [
@@ -116,10 +133,12 @@ class Hotcommend extends Component {
     })
     return (
       <div>
+        <HomeHead />
+        {userArr}
         <div className="hotTagsContainer">
-          {userArr}
           {contentArr}
         </div>
+        <HomeFooter />
       </div>
     )
   }
