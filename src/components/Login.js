@@ -23,14 +23,12 @@ class Login extends Component {
         console.log('发送验证码啦')
         fetch('/api/api/get_login_code', {
           method: 'POST',
-          body: {
-            key: 'phone',
-            value: document.getElementsByClassName('phone')[0].value,
-            description: ''
-          },
           headers: {
-            'Accept': 'application/x-www-form-urlencoded'
-          }
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            phone: document.getElementsByClassName('phone')[0].value
+          })
         })
           .then(response => {
             return response.json()
@@ -38,7 +36,7 @@ class Login extends Component {
           .then(response => {
             console.log(response)
             // ----分割线----
-            if (response.state === 'ok') {
+            if (response.status === 'ok') {
               document.getElementById('login_yard_btn').style.opacity = '0.4'
               document.getElementById('codeContent').innerHTML = 's后可重发'
               document.getElementById('codeTime').style.display = 'block'
@@ -54,7 +52,7 @@ class Login extends Component {
                 }
               }, 1000)
             }
-            if (response.state === 'fail' && response.error.msg === '手机号还没有注册') {
+            if (response.status === 'fail' && response.error.msg === '手机号还没有注册') {
               phone.style.border = '1px solid red'
               phoneImg.src = require('../assets/images/手机号还没有注册.png')
               phoneImg.style.display = 'block'
@@ -71,7 +69,9 @@ class Login extends Component {
   // 点击关闭登录页面
   closeLogin = () => {
     document.getElementsByClassName('phone')[0].style.border = ''
+    document.getElementsByClassName('phone')[0].value = ''
     document.getElementById('phoneImg').style.display = 'none'
+    document.getElementById('login_yard_input').value = ''
     const btnLogin = document.getElementById('login')
     btnLogin.style.display = 'none'
   }
