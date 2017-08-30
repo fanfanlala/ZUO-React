@@ -1,7 +1,6 @@
-/**
- * Created by dllo on 17/8/29.
- */
 import React, {Component} from 'react'
+import HomeHead from '../component/Home_head'
+import HomeFooter from '../component/Home_footer'
 import '../assets/styles/Home.styl'
 import '../assets/styles/foot+downloadApp.styl'
 class Hotcommend extends Component {
@@ -41,7 +40,6 @@ class Hotcommend extends Component {
     document.body.onscroll = this.scroll
   }
   scroll = () => {
-    if (document.body.scrollTop >= 1267) {
     if (document.body.scrollTop + document.documentElement.clientHeight === document.body.scrollHeight && document.body.scrollTop > 1000) {
       let commentPaths = window.location.href.split('=')[1]
       const newContentArr = this.state.postsContent
@@ -98,7 +96,7 @@ class Hotcommend extends Component {
         </div>
       </div>
     ]
-    // 推荐关注二级页面的内容的数据解析
+// 推荐关注二级页面的内容的数据解析
     let contentArr = this.state.postsContent.map(function (item, index) {
       var array = item.tags || []
       var tagsArr = array.length !== 0 ? item.tags[0] : ''
