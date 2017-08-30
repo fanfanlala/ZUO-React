@@ -5,7 +5,8 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: false
+      data: false,
+      password: ''
     }
   }
   // 点击发送验证码
@@ -82,6 +83,9 @@ class Login extends Component {
       oPhoneLoginA.innerHTML = '手机验证码登录'
       oPhoneLoginImg.src = require('../assets/images/手机.png')
       this.state.data = true
+      this.setState({
+        password: 'forget'
+      })
     } else if (this.state.data === true) {
       oLoginYardInput.placeholder = '验证码'
       oLoginYardBtn.style.display = 'block'
@@ -89,6 +93,9 @@ class Login extends Component {
       oPhoneLoginA.innerHTML = '手机密码登录'
       oPhoneLoginImg.src = require('../assets/images/锁.png')
       this.state.data = false
+      this.setState({
+        password: 'resign'
+      })
     }
   }
   render() {
