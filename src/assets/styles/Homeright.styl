@@ -1,62 +1,76 @@
 *
   margin 0
   padding 0
+
 .left
   float left
+
 .right
   float right
+
 .clearFloat::after
   content ''
   display table
   clear both
+
 //热门标签
 .hotCommend
   width 220px
-  border 1px solid black
-.hotTags>p
+
+.hotTags > p
   font-size 14px
   font-weight 500
   color #272c2f
   margin-bottom 20px
-.hotTags>a
+
+.hotTags > a
   display inline-block
   text-decoration none
   color #999b9c
   border-radius 4px
-  font-size:14px
+  font-size: 14px
   padding 6px 10px
   margin-right 10px
   margin-bottom 10px
   background-color #eaeced
   transition-duration 0.3s
-.hotTags>a:hover{
+
+.hotTags > a:hover {
   color white
   background-color darkgray
 }
+
 //推荐关注
-.commend>p
+.commend > p
   margin-bottom 20px
   margin-top 30px
+
 .commend-introduction
-   border-bottom 1px solid #e4e4e5
-   margin-bottom 10px
+  border-bottom 1px solid #e4e4e5
+  margin-bottom 10px
+
 .commend-title
   text-decoration none
   font-size 14px
   color #272c2f
   font-weight 500
+
 .commend-title:hover
   color #999a9a
+
 .commend-introduction::after
   content ''
   display table
   clear both
-.commend-introduction>div,.commend-introduction img
+
+.commend-introduction > div, .commend-introduction img
   float left
-.commend-introduction>div>a{
+
+.commend-introduction > div > a {
   display block
   margin-bottom 10px
 }
+
 .commend-content
   display inline-block
   width 144px
@@ -64,8 +78,10 @@
   text-decoration none
   font-size 12px
   color #999a9a
+
 .commend-content:hover
   color #272c2f
+
 .commend-introduction img
   border-radius 4px
   margin-left 34px
@@ -73,8 +89,10 @@
   transition-property background-color
   cursor pointer
   border 1px solid #e4e4e5
+
 .commend-Img
   position relative
+
 .commendImg-mask
   width 40px
   height 40px
@@ -85,46 +103,56 @@
   position absolute
   top 0
   left -40px
+
 .commend-Img:hover .commendImg-mask
   display block
   cursor pointer
+
 //热门标签二级页面--搜索
 .hotTagsContainer
   width 930px
   margin 0 auto
-  border 1px solid black
+
 .hotSearch
   width 100%
   height 120px
-  background-color rgb(255,255,255)
+  background-color rgb(255, 255, 255)
   display inline-block
   margin-right 20px
-.hotSearch-title>img
+  margin-top 60px
+
+.hotSearch-title > img
   vertical-align middle
+
 .hotSearch-title span
   font-size 18px
   font-weight 500
   color #272c2f
   display inline-block
   padding-left 8px
+
 .hotSearch-title
   line-height 60px
-.hotSearch-content>span
+
+.hotSearch-content > span
   width 10px
   height 10px
   background-color #1fd7e2
   border-radius 50%
   display inline-block
   margin-left 8px
+
 .hotSearch-content a
   font-size 14px
   text-decoration none
   color #a6a7a7
   padding-left 14px
+
 //热门标签二级页面--相关深度阅读
 .hotArticle
   display inline-block
   margin-right 13px
+
 .hotArticle-title
   display inline-block
   height 88px
@@ -133,25 +161,29 @@
   font-weight 700
   width 930px
   text-align center
+
 .hotArticle-Img
-   display inline-block
-   width 219px
-   height 180px
-   border-radius  4px
-   position relative
-   overflow hidden
+  display inline-block
+  width 219px
+  height 180px
+  border-radius 4px
+  position relative
+  overflow hidden
+
 .hotArticle-Img img
   position absolute
   left 0
   top -73px
+
 .hotArticle-mask
-   background-color black
-   width 219px
-   height 180px
-   opacity 0.4
-   position absolute
-   top 0
-   left 0
+  background-color black
+  width 219px
+  height 180px
+  opacity 0.4
+  position absolute
+  top 0
+  left 0
+
 .hotArticle-content
   display inline-block
   width 183px
@@ -162,16 +194,18 @@
   position absolute
   top 63px
   left 0
+
 .hotArticle-Img p
   width 183px
   height 18px
   margin-left 10px
   font-size 12px
-  color rgba(255,255,255,0.6)
+  color rgba(255, 255, 255, 0.6)
   overflow: hidden
   position absolute
-  left:0
-  top:148px
+  left: 0
+  top: 148px
+
 //  相关ZUO
 .hotZuo
   width 219px
@@ -179,44 +213,53 @@
   border-radius 4px
   margin 0 10px 20px 0
   display inline-block
+
 .hotZuo-title
   color #a6a7a7
   padding 10px
   font-size 14px
+
 .hotZuo-title a
   color black
   text-decoration none
   margin-left 10px
   font-size 14px
+
 .hotZuo-tags
   margin 10px auto
   width 199px
   height 20px
   overflow hidden
+
 .hotZuo-tags div
   display inline-block
   width 8px
   height 8px
   border-radius 50%
   background-color lightgray
+
 .hotZuo-tags a
   text-decoration none
   color #a6a7a7
   font-size 14px
   margin 0 10px
+
 .hotZuo-tags a:hover
   color black
+
 .hotZuo-line
   margin 20px auto
   width 199px
   height 1px
   background-color #a6a7a7
   opacity 0.4
+
 .hotZuo-Img
   width 219px
   height 219px
   overflow hidden
   position relative
+
 .hotZuo-mark
   width 219px
   height 219px
@@ -226,15 +269,19 @@
   top 0
   left 0
   display none
+
 .hotZuo-Img:hover img
   transform scale(1.2)
   transition all 0.3s
+
 .hotZuo-Img:hover .hotZuo-mark
   display block
   transition all 0.3s
+
 .hotZuo-icon
   width 199px
   margin 10px auto
+
 .hotZuo-icon-round
   display inline-block
   width 18px
@@ -243,17 +290,21 @@
   border 1px solid #E1E2E2
   text-align center
   line-height 18px
-.hotZuo-icon>a
+
+.hotZuo-icon > a
   text-decoration none
   display inline-block
   line-height 18px
   color #a6a7a7
   font-size 14px
-.hotZuo-icon a:nth-child(2),.hotZuo-icon a:nth-child(4)
+
+.hotZuo-icon a:nth-child(2), .hotZuo-icon a:nth-child(4)
   margin-right 30px
   margin-left 10px
+
 .hotZuo-icon-round img
   margin-top 1px
+
 // 相关用户
 .hotTags-user
   display inline-block
@@ -262,46 +313,60 @@
   border-radius 4px
   margin-right 20px
   padding 10px 0
+
 .hotTags-user img
   border-radius 50%
+
 .hotTags-user a
   text-decoration none
   font-size 15px
   color #a6a7a7
   font-weight 400
+
 .hotTags-user-title
   border-bottom 1px solid #E1E2E2
   padding-bottom 10px
   margin-bottom 10px
-.hotTags-user-title>a:nth-child(1)
+
+.hotTags-user-title > a:nth-child(1)
   width 110px
   height 21px
   overflow hidden
-.hotTags-user-title,.hotTags-user-Img
+
+.hotTags-user-title, .hotTags-user-Img
   width 199px
   margin 0 auto
+
 .hotTags-user-Img
   margin-top 10px
-.hotTags-user>.hotTags-user-title>a:nth-child(1)
+
+.hotTags-user > .hotTags-user-title > a:nth-child(1)
   color black
-.hotTags-user>.hotTags-user-title>a:nth-child(2)
+
+.hotTags-user > .hotTags-user-title > a:nth-child(2)
   text-align right
   padding 1px 8px
   background-color #1fd7e2
   color white
   border-radius 4px
   margin-left 10px
+
 .hotTags-user-count
   width 30px
   text-align center
-.hotTags-user-count>a
+
+.hotTags-user-count > a
   display block
-.hotTags-user-Img>a:nth-child(1)
+
+.hotTags-user-Img > a:nth-child(1)
   display inline-block
   margin-right 46px
+
 // 推荐关注的二级页面
 .commendUser-wrap
   position relative
+  margin-top 60px
+
 .commendUser
   width 100%
   height 300px
@@ -309,45 +374,54 @@
   background-repeat no-repeat
   background-size cover
   position relative
+
 .commendUser-mark
   position absolute
   top 0
   left 0
   bottom 0
   right 0
-  background-color rgba(0,0,0,0.6)
+  background-color rgba(0, 0, 0, 0.6)
+
 .commendUser-name
   position absolute
   bottom -39px
-  //left 164px
+  left 158px
+
 .commendUser-nameImg img
   border-radius 50%
   margin-top 4px
+
 .commendUser-nameImg-mark
   width 140px
   height 140px
   background-color white
   border-radius 50%
   text-align center
+
 .commendUser-information
   font-size 20px
   margin 44px 27px
-.commendUser-information>span
+
+.commendUser-information > span
   color white
   display inline-block
   margin-right 32px
   margin-bottom 5px
-.commendUser-information>a
+
+.commendUser-information > a
   text-decoration none
   font-size 14px
   padding 1px 8px
   background-color #1fd7e2
   color white
   border-radius 4px
-.commendUser-information>div
+
+.commendUser-information > div
   font-size 14px
   font-weight 500
-  color rgba(255,255,255,0.6)
+  color rgba(255, 255, 255, 0.6)
+
 .commendUser-name-right
   width 82px
   height 83px
@@ -355,36 +429,119 @@
   text-align center
   margin-top 37px
   background-image url("../images/bg.jpg")
-.commendUser-name-right>div:nth-child(1)
+
+.commendUser-name-right > div:nth-child(1)
   font-size 14px
-  color rgba(255,255,255,0.6)
+  color rgba(255, 255, 255, 0.6)
   margin-top 10px
+
 .commendUser-name-line
   height 1px
   width 66px
   margin 8px auto
-  background-color rgba(255,255,255,0.6)
+  background-color rgba(255, 255, 255, 0.6)
+
 .commendUser-name-count
   font-size 20px
   font-weight 700
   color #ffffff
   text-align center
+
 .commendTags
   padding-top 60px
   padding-bottom 20px
+
 .commendTags a
   text-decoration none
   color #a0a1a1
   font-size 14px
   font-weight 500
   padding-right 30px
+
 .commendContent img
-  border-top-left-radius  4px
-  border-top-right-radius  4px
+  border-top-left-radius 4px
+  border-top-right-radius 4px
+
 .commendContent
-  border-radius  4px
+  border-radius 4px
+
 body
   background-color #F6F6F6
+
 .commendContent .commendContent-mark
-  border-top-left-radius  4px
-  border-top-right-radius  4px
+  border-top-left-radius 4px
+  border-top-right-radius 4px
+
+#downloadIOSAndAttentionWeiXin
+  width 220px
+  height 50px
+  margin-top 30px
+
+#downloadIOS
+  border 1px solid #e4e4e5
+  border-radius 4px
+#downloadIOS::after
+  clear both
+  content ''
+  display block
+
+#downloadIOS > div:nth-child(1)
+  width 169px
+  text-align center
+  line-height 50px
+  float left
+  border-right 1px solid #e4e4e5
+
+#downloadIOS > div:nth-child(1) > a
+  color #272c2f
+  text-decoration none
+  font-size 14px
+
+#downloadIOS > div:nth-child(2)
+  float left
+
+#downloadIOS > div:nth-child(2) > img
+  margin 8px 8px
+
+#downloadWeiXin
+  margin-top 10px
+  border 1px solid #e4e4e5
+  border-radius 4px
+
+#downloadWeiXin::after
+  clear both
+  content ''
+  display block
+
+#downloadWeiXin > div:nth-child(1)
+  width 169px
+  text-align center
+  line-height 50px
+  float left
+  border-right 1px solid #e4e4e5
+
+#downloadWeiXin > div:nth-child(1) > a
+  color #272c2f
+  text-decoration none
+  font-size 14px
+
+#downloadWeiXin > div:nth-child(2)
+  float left
+
+#downloadWeiXin > div:nth-child(2) > img
+  margin 11px 12px
+#WeiXinTwoYard
+  display none
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100%
+  z-index 10000
+  background-color rgba(39,44,47,0.9)
+#WeiXinTwoYard>img
+  position fixed
+  top 50%
+  left 50%
+  margin-top -220px
+  margin-left -220px

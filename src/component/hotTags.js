@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 import '../assets/styles/Homeright.styl'
+import '../assets/styles/Home.styl'
+import '../assets/styles/foot+downloadApp.styl'
 import searchImg from '../assets/images/搜索.png'
+import HomeHead from '../component/Home_head'
+import HomeFooter from '../component/Home_footer'
 class HotTags extends Component {
   constructor (props) {
     super(props)
@@ -129,6 +133,7 @@ class HotTags extends Component {
       )
     })]
     articlesArr = this.state.articlesDate > 0 ? articlesArr : ''
+    // 相关ZUO数据解析
     let postArr = [
       <div className='hotTagsContainer'><span className='hotArticle-title'>相关ZUO</span></div>, this.state.postsDate.map(function (item, index) {
         const array = item.tags || []
@@ -169,12 +174,14 @@ class HotTags extends Component {
     return (
       <div>
         <div>
+          <HomeHead />
           <div className='hotTagsContainer'>
             {emptyArr}
             {userArr}
             {articlesArr}
             {postArr}
           </div>
+          <HomeFooter />
         </div>
       </div>
     )

@@ -3,8 +3,7 @@ class Article extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: [],
-      newNumber: ''
+      data: []
     }
   }
   componentDidMount() {
@@ -19,7 +18,6 @@ class Article extends Component {
       })
     })
     document.body.onscroll = this.scroll
-    window.close()
   }
 
   // 返回顶部的点击事件
@@ -38,22 +36,19 @@ class Article extends Component {
     let scrollH = document.body.scrollHeight
     let allH = document.body.scrollTop + document.documentElement.clientHeight
     if (scrollH === allH) {
-      fetch('/api/api/articles?after=' + this.state.newNumber, {
+      const newNum = this.state.data
+      fetch('/api/api/articles?after=' + newNum[newNum.length - 1].createdAt, {
         method: 'GET'
       })
       .then(response => {
         return response.json()
       })
       .then(response => {
-        for (let i = 0; i < this.state.data.length; i++) {
-          var newNum = this.state.data[i].createdAt
-        }
         if (response.has_next === 'false') {
           return false
         } else {
           this.setState({
-            data: this.state.data.concat(response.articles),
-            newNumber: newNum
+            data: this.state.data.concat(response.articles)
           })
         }
       })
