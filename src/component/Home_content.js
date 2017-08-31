@@ -5,12 +5,14 @@ class HomeContent extends Component {
     super(props)
     this.state = {
       data: [],
-      flag: true
+      flag: true,
+      type: '',
+      createAt: ''
     }
   }
 
   componentDidMount () {
-    fetch('api/api/posts?design=&scene=全部', {
+    fetch('/api/api/posts?design=&scene=全部', {
       method: 'GET'
     })
       .then(response => {
@@ -21,6 +23,31 @@ class HomeContent extends Component {
           data: response.posts
         })
       })
+    document.body.onscroll = this.scroll
+  }
+  scroll = () => {
+    if (document.body.scrollTop + document.documentElement.clientHeight === document.body.scrollHeight) {
+      for (let i = 0; i < this.state.data.length; i++) {
+        this.setState({
+          createAt: this.state.data[i].createdAt
+        })
+      }
+      fetch('/api/api/posts?design=&scene=' + this.state.type + '&after=' + this.state.createAt, {
+        method: 'GET'
+      })
+        .then(response => {
+          return response.json()
+        })
+        .then(response => {
+          if (response.has_next === true) {
+            this.setState({
+              data: this.state.data.concat(response.posts)
+            })
+          } else {
+            return false
+          }
+        })
+    }
   }
   // 评论框
   comment = (ev) => {
@@ -61,14 +88,167 @@ class HomeContent extends Component {
     }
   }
 
+  clickAll = () => {
+    var chooseName = document.getElementById('chooseName')
+    chooseName.innerHTML = '全部'
+    fetch('/api/api/posts?design=&scene=全部', {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.posts
+        })
+      })
+  }
+  clickRiYong = () => {
+    var chooseName = document.getElementById('chooseName')
+    chooseName.innerHTML = '日用'
+    fetch('/api/api/posts?design=&scene=日用', {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.posts
+        })
+      })
+  }
+  clickPublic = () => {
+    var chooseName = document.getElementById('chooseName')
+    chooseName.innerHTML = '公共'
+    fetch('/api/api/posts?design=&scene=公共', {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.posts
+        })
+      })
+  }
+  clickGuanAi = () => {
+    var chooseName = document.getElementById('chooseName')
+    chooseName.innerHTML = '关爱'
+    fetch('/api/api/posts?design=&scene=关爱', {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.posts
+        })
+      })
+  }
+  clickJiaJu = () => {
+    var chooseName = document.getElementById('chooseName')
+    chooseName.innerHTML = '家居'
+    fetch('/api/api/posts?design=&scene=家居', {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.posts
+        })
+      })
+  }
+  clickShiShang = () => {
+    var chooseName = document.getElementById('chooseName')
+    chooseName.innerHTML = '时尚'
+    fetch('/api/api/posts?design=&scene=时尚', {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.posts
+        })
+      })
+  }
+  clickFood = () => {
+    var chooseName = document.getElementById('chooseName')
+    chooseName.innerHTML = '美食'
+    fetch('/api/api/posts?design=&scene=美食', {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.posts
+        })
+      })
+  }
+  clickShuMa = () => {
+    var chooseName = document.getElementById('chooseName')
+    chooseName.innerHTML = '数码'
+    fetch('/api/api/posts?design=&scene=数码', {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.posts
+        })
+      })
+  }
+  clickShiJue = () => {
+    var chooseName = document.getElementById('chooseName')
+    chooseName.innerHTML = '视觉'
+    fetch('/api/api/posts?design=&scene=视觉', {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.posts
+        })
+      })
+  }
+  clickKongJian = () => {
+    var chooseName = document.getElementById('chooseName')
+    chooseName.innerHTML = '空间'
+    fetch('/api/api/posts?design=&scene=空间', {
+      method: 'GET'
+    })
+      .then(response => {
+        return response.json()
+      })
+      .then(response => {
+        this.setState({
+          data: response.posts
+        })
+      })
+  }
+
   render () {
+    // var arrar = this.state.tags || []
     var arr = []
     var tagArr = []
     var commentArr = []
     for (let i = 0; i < this.state.data.length; i++) {
       tagArr[i] = []
       commentArr[i] = []
-      for (let j = 0; j < this.state.data[i].tags.length; j++) {
+      var tagsArr = this.state.data[i].tags || []
+      for (let j = 0; j < tagsArr.length; j++) {
         if (this.state.data[i].tags.length === 0) {
           return
         } else {
@@ -175,21 +355,21 @@ class HomeContent extends Component {
             <div className='feed_list_bar_left' onClick={this.clickMore}>
               <span>
                 <i className='feed_all_logo'><img src={require('../assets/images/全部.png')} /></i>
-                <span>全部</span>
+                <span id='chooseName'>全部</span>
               </span>
               <i className='feed_down_logo'><img src={require('../assets/images/下.png')} /></i>
               <ul className='dropdown-menu-wrap'>
                 <li className='dropdown-menu-jiao' />
-                <li className='scene-menu-item'><div className='change-secne-link'><span><img className='downloadALl' src={require('../assets/images/全部.png')} /></span>全部</div></li>
-                <li className='scene-menu-item'><div className='change-secne-link'><div className='color1' />日用</div></li>
-                <li className='scene-menu-item'><div className='change-secne-link'><div className='color2' />公共</div></li>
-                <li className='scene-menu-item'><div className='change-secne-link'><div className='color3' />关爱</div></li>
-                <li className='scene-menu-item'><div className='change-secne-link'><div className='color4' />家居</div></li>
-                <li className='scene-menu-item'><div className='change-secne-link'><div className='color5' />时尚</div></li>
-                <li className='scene-menu-item'><div className='change-secne-link'><div className='color6' />美食</div></li>
-                <li className='scene-menu-item'><div className='change-secne-link'><div className='color7' />数码</div></li>
-                <li className='scene-menu-item'><div className='change-secne-link'><div className='color8' />视觉</div></li>
-                <li className='scene-menu-item'><div className='change-secne-link'><div className='color9' />空间</div></li>
+                <li className='scene-menu-item'><div className='change-secne-link' onClick={this.clickAll}><span><img className='downloadALl' src={require('../assets/images/全部.png')} /></span>全部</div></li>
+                <li className='scene-menu-item'><div className='change-secne-link' onClick={this.clickRiYong}><div className='color1' />日用</div></li>
+                <li className='scene-menu-item'><div className='change-secne-link' onClick={this.clickPublic}><div className='color2' />公共</div></li>
+                <li className='scene-menu-item'><div className='change-secne-link' onClick={this.clickGuanAi}><div className='color3' />关爱</div></li>
+                <li className='scene-menu-item'><div className='change-secne-link' onClick={this.clickJiaJu}><div className='color4' />家居</div></li>
+                <li className='scene-menu-item'><div className='change-secne-link' onClick={this.clickShiShang}><div className='color5' />时尚</div></li>
+                <li className='scene-menu-item'><div className='change-secne-link' onClick={this.clickFood}><div className='color6' />美食</div></li>
+                <li className='scene-menu-item'><div className='change-secne-link' onClick={this.clickShuMa}><div className='color7' />数码</div></li>
+                <li className='scene-menu-item'><div className='change-secne-link' onClick={this.clickShiJue}><div className='color8' />视觉</div></li>
+                <li className='scene-menu-item'><div className='change-secne-link' onClick={this.clickKongJian}><div className='color9' />空间</div></li>
               </ul>
             </div>
             <div className='feed_list_bar_right'>
