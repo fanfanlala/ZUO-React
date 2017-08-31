@@ -6,6 +6,10 @@ class LoginHeader extends Component {
     document.getElementById('phoneImg').style.display = 'none'
     const btnLogin = document.getElementById('login')
     btnLogin.style.display = 'none'
+    document.getElementsByClassName('phone')[0].style.border = ''
+    document.getElementsByClassName('phone')[0].value = ''
+    document.getElementById('phoneImg').style.display = 'none'
+    document.getElementById('login_yard_input').value = ''
   }
   render () {
     return (
