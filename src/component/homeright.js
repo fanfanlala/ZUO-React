@@ -1,7 +1,5 @@
-/**
- * Created by dllo on 17/8/24.
- */
 import React, {Component} from 'react'
+import DownloadIOSAndAttentionWeiXin from '../components/downloadIOSAndAttentionWeiXin'
 class Homeright extends Component {
   constructor (props) {
     super(props)
@@ -69,6 +67,7 @@ class Homeright extends Component {
           <p>推荐关注</p>
           {commendArray}
         </div>
+        <DownloadIOSAndAttentionWeiXin />
       </div>
     )
   }
