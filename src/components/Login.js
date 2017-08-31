@@ -1,10 +1,12 @@
-import React, {Component} from 'react'
-// import LoginPhone from '../components/LoginPhone'
+import React, { Component } from 'react'
+import LoginMiddleImg from './loginMiddleImg'
+import LoginHeader from './loginHeader'
 class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      data: false
+      data: false,
+      password: 'resign'
     }
   }
   // 点击发送验证码
@@ -40,7 +42,7 @@ class Login extends Component {
               document.getElementById('login_yard_btn').style.opacity = '0.4'
               document.getElementById('codeContent').innerHTML = 's后可重发'
               document.getElementById('codeTime').style.display = 'block'
-              let time = 6
+              let time = 60
               let timer = setInterval(function () {
                 time--
                 document.getElementById('codeTime').innerHTML = time
@@ -66,15 +68,6 @@ class Login extends Component {
     document.getElementsByClassName('phone')[0].style.border = ''
     document.getElementById('phoneImg').style.display = 'none'
   }
-  // 点击关闭登录页面
-  closeLogin = () => {
-    document.getElementsByClassName('phone')[0].style.border = ''
-    document.getElementsByClassName('phone')[0].value = ''
-    document.getElementById('phoneImg').style.display = 'none'
-    document.getElementById('login_yard_input').value = ''
-    const btnLogin = document.getElementById('login')
-    btnLogin.style.display = 'none'
-  }
   // 点击手机密码登录
   phoneLogin = () => {
     const oLoginYardInput = document.getElementById('login_yard_input')
@@ -89,6 +82,9 @@ class Login extends Component {
       oPhoneLoginA.innerHTML = '手机验证码登录'
       oPhoneLoginImg.src = require('../assets/images/手机.png')
       this.state.data = true
+      this.setState({
+        password: 'forget'
+      })
     } else if (this.state.data === true) {
       oLoginYardInput.placeholder = '验证码'
       oLoginYardBtn.style.display = 'block'
@@ -96,29 +92,29 @@ class Login extends Component {
       oPhoneLoginA.innerHTML = '手机密码登录'
       oPhoneLoginImg.src = require('../assets/images/锁.png')
       this.state.data = false
+      this.setState({
+        password: 'resign'
+      })
+    }
+  }
+  // 点击 没有密码去注册
+  goResign = () => {
+    if (this.state.password === 'resign') {
+      document.getElementById('login').style.display = 'none'
+      document.getElementById('register').style.display = 'block'
+    }
+    if (this.state.password === 'forget') {
+      document.getElementById('login').style.display = 'none'
+      document.getElementById('forgetPassword').style.display = 'block'
     }
   }
   render() {
     return (
       <div id="login">
         <div>
-          <div id="login_logo">
-            <img src={require('../assets/images/avatar.jpg')} alt="" width={32} height={32} />
-            <div>欢迎回到 ZUO</div>
-            <a href="#" id="closeLogin" onClick={this.closeLogin}><img src={require('../assets/images/false.png')} alt="" height={30} width={30} /></a>
-          </div>
+          <LoginHeader />
           <div id="login_content">
-            <div id="login_xlANDwx">
-              <a
-                href="https://api.weibo.com/oauth2/authorize?client_id=550264216&response_type=code&redirect_uri=http://www.zuodesign.cn/account/weibo/callback"><img src={require('../assets/images/新浪.png')} alt="" width={32} height={32} /></a>
-              <a href="#"><img src={require('../assets/images/微信.png')} alt="" width={32} height={32} /></a>
-            </div>
-            <div id="login_third">你可以使用第三方社交账号直接登录</div>
-            <div id="login_or">
-              <div />
-              <div>或者</div>
-              <div />
-            </div>
+            <LoginMiddleImg />
             <div id="Login_phoneNumber">
               <input type="text" placeholder="手机号" className="phone" onFocus={this.phoneFocus} />
               <img src={require('../assets/images/请填写手机号.png')} alt="" id="phoneImg" />
@@ -128,7 +124,7 @@ class Login extends Component {
               <button id="login_yard_btn" onClick={this.codeClick}><span id="codeTime">60</span><a href="#" id="codeContent">发送验证码</a></button>
             </div>
             <div id="login_register">
-              <div id="registerUserName"><a href="#" id="registerUserNameA">没有账号? 去注册</a></div>
+              <div id="registerUserName" onClick={this.goResign}><a href="#" id="registerUserNameA">没有账号? 去注册</a></div>
               <div id="phoneLogin" onClick={this.phoneLogin}>
                 <img src={require('../assets/images/锁.png')} alt="" width={16} height={16} id="phoneLoginImg" />
                 <a href="#" id="phoneLoginA">手机密码登录</a>

@@ -32,7 +32,7 @@
   height: 24px;
   display: inline-block;
   margin-right: 30px;
-  line-height: 24px;
+  line-height: 24px; !important;
 }
 .head_middle ul li a {
   color: #9ea0a5;
