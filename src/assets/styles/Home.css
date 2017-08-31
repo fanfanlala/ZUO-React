@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 1000;
 }
 .head_left > a > img {
   height: 60px;
@@ -32,7 +32,7 @@
   height: 24px;
   display: inline-block;
   margin-right: 30px;
-  line-height: 24px; !important;
+  line-height: 24px;
 }
 .head_middle ul li a {
   color: #9ea0a5;
@@ -254,7 +254,7 @@
 #login_yard > button {
   position: absolute;
   right: 32px;
-  top: 3px;
+  top: 7px;
   background-color: #1fd7e2;
   color: #fff;
   outline: none;
@@ -323,4 +323,268 @@
   color: #fff;
   text-decoration: none;
   width: 480px;
+}
+#Login_phoneNumber {
+  position: relative;
+}
+#Login_phoneNumber img {
+  position: absolute;
+  top: 13px;
+  right: -205px;
+  display: none;
+}
+#codeTime {
+  display: none;
+  width: 10px;
+  position: absolute;
+  top: 13px;
+  left: 4px;
+}
+/**********************************/
+#register {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(39,44,47,0.9);
+  z-index: 10000;
+}
+#register-content {
+  width: 540px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -270px;
+  margin-top: -310px;
+}
+#register-header {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background-color: #272c2f;
+  height: 80px;
+  text-align: center;
+  color: #fff;
+  line-height: 80px;
+  font-size: 18px;
+  position: relative;
+}
+#register-header>img {
+  vertical-align: middle;
+}
+#register-header>strong {
+  margin: 0 15px;
+}
+#register-middle {
+  background-color: #fff;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+#closeLoginRegister {
+  position: absolute;
+  top: -10px;
+  right: -40px;
+}
+#register-middle-one>input,
+#register-middle-two>input,
+#register-middle-three>input,
+#register-middle-four>input {
+  width: 440px;
+  height: 22px;
+  padding: 14px 20px;
+  line-height: 22px;
+  font-size: 14px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+  display: block;
+  margin: 20px auto 10px;
+}
+#register-middle-two {
+  position: relative;
+}
+#register-middle-two > button {
+  position: absolute;
+  right: 32px;
+  top: 7px;
+  background-color: #1fd7e2;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+#register-middle-two > button > a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  font-size: 14px;
+}
+#userAgreement {
+  width: 480px;
+  margin: 0 auto;
+}
+#userAgreement::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+#userAgreement-left {
+  font-size: 14px;
+  font-weight: 400;
+  float: left;
+}
+#userAgreement-left>a {
+  color: #00dbe5;
+  text-decoration: none;
+}
+#userAgreement-right {
+  font-size: 14px;
+  font-weight: 400;
+  float: right;
+}
+#userAgreement-right>span>a {
+  text-decoration: none;
+  color: #272c2f;
+}
+#register-btn {
+  width: 480px;
+  margin: 0 auto;
+}
+#register-btn>button {
+  font-size: 18px;
+  margin: 30px auto;
+  outline: none;
+  border: none;
+  background-color: #1fd7e2;
+  border-radius: 4px;
+  line-height: 40px;
+}
+#register-btn>button>a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  width: 480px;
+}
+/**************************************/
+#forgetPassword {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(39,44,47,0.9);
+  z-index: 10000;
+}
+#forgetPassword-content {
+  width: 540px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -270px;
+  margin-top: -310px;
+}
+#forgetPassword-header {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background-color: #272c2f;
+  height: 80px;
+  text-align: center;
+  color: #fff;
+  line-height: 80px;
+  font-size: 18px;
+  position: relative;
+}
+#forgetPassword-header>strong {
+  margin: 0 15px;
+}
+#closeForgetPassword {
+  position: absolute;
+  top: -10px;
+  right: -40px;
+}
+#forgetPassword-middle {
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+#forgetPassword-middle-one>input,
+#forgetPassword-middle-two>input,
+#forgetPassword-middle-three>input,
+#forgetPassword-middle-four>input {
+  width: 440px;
+  height: 22px;
+  padding: 14px 20px;
+  line-height: 22px;
+  font-size: 14px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+  display: block;
+  margin: 20px auto 10px;
+}
+#forgetPassword-middle-one>input {
+  margin: 60px auto 10px;
+}
+#forgetPassword-middle-two {
+  position: relative;
+}
+#forgetPassword-middle-two > button {
+  position: absolute;
+  right: 32px;
+  top: 7px;
+  background-color: #1fd7e2;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}
+#forgetPassword-middle-two > button > a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  font-size: 14px;
+}
+#forgetPassword-btn {
+  width: 480px;
+  margin: 0 auto;
+}
+#forgetPassword-btn>button {
+  font-size: 18px;
+  margin: 30px auto;
+  outline: none;
+  border: none;
+  background-color: #1fd7e2;
+  border-radius: 4px;
+  line-height: 40px;
+}
+#forgetPassword-btn>button>a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  width: 480px;
+}
+/******************************/
+#downloadApp {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(39,44,47,0.9);
+  z-index: 10000;
+}
+#downloadApp>img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -220px;
+  margin-left: -220px;
 }

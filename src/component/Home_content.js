@@ -240,7 +240,6 @@ class HomeContent extends Component {
   }
 
   render () {
-    // var arrar = this.state.tags || []
     var arr = []
     var tagArr = []
     var commentArr = []
