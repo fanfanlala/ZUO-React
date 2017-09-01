@@ -4,6 +4,23 @@ import Register from '../components/loginRegister'
 import ForgetPassword from '../components/forgetPassword'
 import DownloadApp from '../components/nav-downloadAPP'
 class HomeHead extends Component {
+  componentDidMount() {
+    document.body.onscroll = this.scroll
+  }
+  scroll = () => {
+    if (document.body.scrollTop > 500) {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0.4'
+    } else {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0'
+    }
+  }
+  // 返回顶部的点击事件
+  returnTop = () => {
+    document.body.scrollTop = 0
+  }
+
   goShenDu = (ev) => {
     ev.target.style.color = 'white'
   }
@@ -16,6 +33,7 @@ class HomeHead extends Component {
   downloadApp = () => {
     document.getElementById('downloadApp').style.display = 'block'
   }
+
   render () {
     return (
       <div>
@@ -45,6 +63,9 @@ class HomeHead extends Component {
         <Register />
         <ForgetPassword />
         <DownloadApp />
+        <div id="returnTop" onClick={this.returnTop} onScroll={this.scroll}><a href="#"><img
+          src={require('../assets/images/返回顶部.png')} alt="" /></a>
+        </div>
       </div>
     )
   }
