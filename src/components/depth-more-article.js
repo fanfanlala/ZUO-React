@@ -19,11 +19,6 @@ class Article extends Component {
     })
     document.body.onscroll = this.scroll
   }
-
-  // 返回顶部的点击事件
-  click = () => {
-    document.body.scrollTop = 0
-  }
   // 滚轮到底部加载新的数据
   scroll = () => {
     if (document.body.scrollTop > 500) {
