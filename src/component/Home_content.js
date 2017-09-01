@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import HomeContentClickLittlePage from './HomeContentClickLittlePage'
 
 class HomeContent extends Component {
   constructor (props) {
@@ -7,7 +8,9 @@ class HomeContent extends Component {
       data: [],
       flag: true,
       type: '',
-      createAt: ''
+      createAt: '',
+      projectId: '',
+      projectJson: ''
     }
   }
 
@@ -239,6 +242,14 @@ class HomeContent extends Component {
       })
   }
 
+  clickLittlePage = (ev) => {
+    console.log(ev.target.id)
+    this.setState({
+      projectId: ev.target.id
+    })
+    // document.getElementsByClassName('zuo-detail-modal')[0].style.display = 'block'
+  }
+
   render () {
     var arr = []
     var tagArr = []
@@ -319,7 +330,7 @@ class HomeContent extends Component {
           </div>
           <div className='zuo-feed_body'>
             <div className='feed-body'><img className='feed-body-img' src={this.state.data[i]['postImage'].url} />
-              <div className='feed-meng' />
+              <div className='feed-meng' id={this.state.data[i].objectId} onClick={this.clickLittlePage} />
             </div>
             <div className='feed-content'>
               <div className='feed-text'>{this.state.data[i]['postDescription']}</div>
@@ -384,6 +395,7 @@ class HomeContent extends Component {
             <div style={{ clear: 'both' }} />
           </div>
           <div className='content_wrap_content'>
+            <HomeContentClickLittlePage projectId={this.state.projectId} />
             {arr}
           </div>
         </div>
