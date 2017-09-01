@@ -67,6 +67,17 @@ class HotTags extends Component {
           postsDate: response.posts
         })
       })
+    document.body.onscroll = this.returnTopScroll
+  }
+  // 返回顶部滚轮判断是否显示
+  returnTopScroll = () => {
+    if (document.body.scrollTop > 500) {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0.4'
+    } else {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0'
+    }
   }
 
   render () {

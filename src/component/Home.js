@@ -3,6 +3,19 @@ import HomeBody from './Home_body'
 import HomeHead from './Home_head'
 import HomeFoot from './Home_footer'
 class Home extends Component {
+  componentDidMount() {
+    document.body.onscroll = this.returnTopScroll
+  }
+  // 滚轮到底部加载新的数据
+  returnTopScroll = () => {
+    if (document.body.scrollTop > 500) {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0.4'
+    } else {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0'
+    }
+  }
   closeWelcome = () => {
     var zuoWelcome = document.getElementsByClassName('zuo-welcome')[0]
     var container = document.getElementsByClassName('zuo_container')[0]

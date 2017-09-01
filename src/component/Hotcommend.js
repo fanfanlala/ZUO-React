@@ -40,6 +40,13 @@ class Hotcommend extends Component {
     document.body.onscroll = this.scroll
   }
   scroll = () => {
+    if (document.body.scrollTop > 500) {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0.4'
+    } else {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0'
+    }
     if (document.body.scrollTop + document.documentElement.clientHeight === document.body.scrollHeight && document.body.scrollTop > 1000) {
       let commentPaths = window.location.href.split('=')[1]
       const newContentArr = this.state.postsContent

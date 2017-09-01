@@ -17,10 +17,10 @@ class Article extends Component {
         data: response.articles
       })
     })
-    document.body.onscroll = this.scroll
+    document.body.onscroll = this.returnTopScroll
   }
   // 滚轮到底部加载新的数据
-  scroll = () => {
+  returnTopScroll = () => {
     if (document.body.scrollTop > 500) {
       let returnTop = document.getElementById('returnTop')
       returnTop.style.opacity = '0.4'
@@ -49,12 +49,13 @@ class Article extends Component {
       })
     }
   }
-
   render() {
     const dataArray = this.state.data.map(function (item, index) {
       return (
         <div className="more-content-every">
-          <div><a href='#'><img src={item.banner} alt='' /></a></div>
+          <div>
+            <a href='#'><img src={item.banner} alt='' width={219} /></a>
+          </div>
           <div>
             <div><a href='#'>{item.title}</a></div>
             <div>
@@ -71,8 +72,6 @@ class Article extends Component {
         <div id='more-content'>
           {dataArray}
         </div>
-        <div id="returnTop" onClick={this.click} onScroll={this.scroll}><a href="#"><img
-          src={require('../assets/images/返回顶部.png')} alt="" /></a></div>
       </div>
     )
   }
