@@ -1,0 +1,95 @@
+.zuo-btn-theme {
+  width: 100%;
+  padding: 14px 9px;
+  background-color: #1fd7e2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.title {
+  margin-top: 20px;
+}
+.topic-user-info {
+  padding-bottom: 15px;
+  margin-top: 20px;
+  border-bottom: 1px solid #ececec;
+  overflow: hidden;
+}
+.avatar {
+  float: left;
+}
+.avatar>img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.text-info {
+  width: 165px;
+  padding-left: 15px;
+  float: left;
+}
+.name {
+  font-size: 14px;
+  color: #535557;
+  cursor: pointer;
+}
+.intro {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #a6a7a7;
+}
+.topic-share {
+  position: relative;
+  margin-top: 20px;
+}
+.topic-share-tip {
+  font-size: 14px;
+  color: #272c2f;
+  padding-right: 20px;
+}
+.zuo-social-share-link-weixin {
+  margin-right: 10px;
+}
+.zuo-social-share-link-weixin {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  background: url("../images/微信.png") no-repeat;
+  background-size: 100%;
+}
+.zuo-social-share-link-weixin:hover {
+  background: url("../images/微信hover.png") no-repeat;
+  background-size: 100%;
+}
+.zuo-social-share-link-weibo {
+  cursor: pointer;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  background: url("../images/新浪.png") no-repeat;
+  background-size: 100%;
+}
+.zuo-social-share-link-weibo:hover {
+  background: url("../images/新浪hover.png") no-repeat;
+  background-size: 100%;
+}
+.qrcode {
+  clear: both;
+  position: absolute;
+  left: 0;
+  top: 60px;
+  opacity: 0;
+  width: 140px;
+  height: 140px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  transition: 0.5s;
+}

@@ -45,6 +45,9 @@ class HomeBody extends Component {
       }
     }, 30000)
   }
+  stationery = () => {
+    window.location.href = 'stationery.html'
+  }
   componentDidUpdate () {
     // document.getElementsByClassName('topic_cards_body_comments_text')[0].innerHTML = this.state.username + ':' + this.state.text
     document.getElementsByClassName('comments_username')[0].innerHTML = this.state.username + ':'
@@ -55,7 +58,7 @@ class HomeBody extends Component {
       <div className='zuo_container'>
         <div className='zuo_container_content'>
           <div className='left_col'>
-            <div className='left_topic_cards' >
+            <div className='left_topic_cards' onClick={this.stationery} >
               <div className='topic_cards_body' style={{background: 'url(' + this.state.urlStr + ')'}}>
                 <div className='topic_cards_body_mask' />
                 <div className='topic_cards_info'>
