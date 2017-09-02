@@ -8,7 +8,12 @@ class Hotcommend extends Component {
     super(props)
     this.state = {
       userTitle: [],
-      postsContent: []
+      postsContent: [],
+      classTags: '',
+      classCommend: [],
+      classTopic: [],
+      classFollowee: [],
+      classFollower: []
     }
   }
   componentDidMount () {
@@ -40,6 +45,13 @@ class Hotcommend extends Component {
     document.body.onscroll = this.scroll
   }
   scroll = () => {
+    if (document.body.scrollTop > 500) {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0.4'
+    } else {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0'
+    }
     if (document.body.scrollTop + document.documentElement.clientHeight === document.body.scrollHeight && document.body.scrollTop > 1000) {
       let commentPaths = window.location.href.split('=')[1]
       const newContentArr = this.state.postsContent
@@ -57,6 +69,52 @@ class Hotcommend extends Component {
             })
           }
         })
+    }
+  }
+  // 分类的点击事件
+  commendClass = (e) => {
+    let reg = /[\u4e00-\u9fa5]+/g
+    let classTags = e.target.innerHTML.match(reg)[0]
+    e.target.style.color = 'black'
+    let commentPathClass = window.location.href.split('=')[1]
+    console.log(e.target.innerHTML.match(reg)[0])
+    switch (classTags) {
+      case '赞同':
+        this.setState({
+          classTags: 'post_by_user/likes'
+        })
+        fetch('/api/api/' + this.state.classTags + '?zuoId=' + commentPathClass, {
+          method: 'Get'
+        })
+          .then(response => {
+            return response.json()
+          })
+          .then(response => {
+            this.setState({
+              postsContent: response.posts
+            })
+          })
+        break
+      case '评论':
+        this.setState({
+          classTags: 'comment_by_user'
+        })
+        break
+      case '话题':
+        this.setState({
+          classTags: 'topic_comments_by_user'
+        })
+        break
+      case '关注':
+        this.setState({
+          classTags: 'followee_by_user'
+        })
+        break
+      case '粉丝':
+        this.setState({
+          classTags: 'follower_by_user'
+        })
+        break
     }
   }
 
@@ -87,12 +145,12 @@ class Hotcommend extends Component {
           </div>
         </div>
         <div className="commendTags hotTagsContainer">
-          <a href="#">发布&nbsp;&nbsp;{this.state.userTitle.all_createposts_count}</a>
-          <a href="#">赞同&nbsp;&nbsp;{this.state.userTitle.all_likeposts_count}</a>
-          <a href="#">评论&nbsp;&nbsp;{this.state.userTitle.all_comments_count}</a>
-          <a href="#">话题&nbsp;&nbsp;{this.state.userTitle.all_topic_count}</a>
-          <a href="#">关注&nbsp;&nbsp;{this.state.userTitle.all_followees_count}</a>
-          <a href="#">粉丝&nbsp;&nbsp;{this.state.userTitle.all_followers_count}</a>
+          <a href="#" >发布&nbsp;&nbsp;{this.state.userTitle.all_createposts_count}</a>
+          <a onClick={this.commendClass} >赞同&nbsp;&nbsp;{this.state.userTitle.all_likeposts_count}</a>
+          <a href="#" onClick={this.commendClass} >评论&nbsp;&nbsp;{this.state.userTitle.all_comments_count}</a>
+          <a href="#" onClick={this.commendClass} >话题&nbsp;&nbsp;{this.state.userTitle.all_topic_count}</a>
+          <a href="#" onClick={this.commendClass} >关注&nbsp;&nbsp;{this.state.userTitle.all_followees_count}</a>
+          <a href="#" onClick={this.commendClass} >粉丝&nbsp;&nbsp;{this.state.userTitle.all_followers_count}</a>
         </div>
       </div>
     ]

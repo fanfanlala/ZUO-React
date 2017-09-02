@@ -3,6 +3,23 @@ import HomeBody from './Home_body'
 import HomeHead from './Home_head'
 import HomeFoot from './Home_footer'
 class Home extends Component {
+  componentDidMount() {
+    document.body.onscroll = this.returnTopScroll
+  }
+  // 创建ZUO点击事件
+  createZuoClick = () => {
+    document.getElementById('register').style.display = 'block'
+  }
+  // 滚轮到底部加载新的数据
+  returnTopScroll = () => {
+    if (document.body.scrollTop > 500) {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0.4'
+    } else {
+      let returnTop = document.getElementById('returnTop')
+      returnTop.style.opacity = '0'
+    }
+  }
   closeWelcome = () => {
     var zuoWelcome = document.getElementsByClassName('zuo-welcome')[0]
     var container = document.getElementsByClassName('zuo_container')[0]
@@ -22,7 +39,7 @@ class Home extends Component {
                 <br />
                 <span className='subtip_2'>从设计的视角，重新认识世界</span>
               </div>
-              <button className='createZuo'>创建ZUO账号</button>
+              <button className='createZuo' onClick={this.createZuoClick}>创建ZUO账号</button>
               <div className='welcome_close' onClick={this.closeWelcome}>
                 <img src={require('../assets/images/false.png')} />
               </div>
