@@ -243,11 +243,10 @@ class HomeContent extends Component {
   }
 
   clickLittlePage = (ev) => {
-    console.log(ev.target.id)
     this.setState({
       projectId: ev.target.id
     })
-    // document.getElementsByClassName('zuo-detail-modal')[0].style.display = 'block'
+    document.getElementsByClassName('zuo-detail-modal')[0].style.display = 'block'
   }
 
   render () {

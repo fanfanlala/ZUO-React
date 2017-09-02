@@ -6,7 +6,8 @@ class Login extends Component {
     super(props)
     this.state = {
       data: false,
-      password: 'resign'
+      password: 'resign',
+      isCodeClick: ''
     }
   }
   // 点击发送验证码
@@ -22,7 +23,9 @@ class Login extends Component {
         phoneImg.src = require('../assets/images/手机号码格式不正确.png')
         phoneImg.style.display = 'block'
       } else {
-        console.log('发送验证码啦')
+        this.setState({
+          isCodeClick: true
+        })
         fetch('/api/api/get_login_code', {
           method: 'POST',
           headers: {
@@ -76,9 +79,11 @@ class Login extends Component {
     const oPhoneLoginA = document.getElementById('phoneLoginA')
     const oPhoneLoginImg = document.getElementById('phoneLoginImg')
     if (this.state.data === false) {
+      oLoginYardInput.value = ''
       oLoginYardInput.placeholder = '密码'
       oLoginYardBtn.style.display = 'none'
       oRegisterUserNameA.innerHTML = '忘记密码'
+      oLoginYardInput.type = 'password'
       oPhoneLoginA.innerHTML = '手机验证码登录'
       oPhoneLoginImg.src = require('../assets/images/手机.png')
       this.state.data = true
@@ -86,7 +91,9 @@ class Login extends Component {
         password: 'forget'
       })
     } else if (this.state.data === true) {
+      oLoginYardInput.value = ''
       oLoginYardInput.placeholder = '验证码'
+      oLoginYardInput.type = 'text'
       oLoginYardBtn.style.display = 'block'
       oRegisterUserNameA.innerHTML = '没有账号? 去注册'
       oPhoneLoginA.innerHTML = '手机密码登录'
@@ -108,6 +115,92 @@ class Login extends Component {
       document.getElementById('forgetPassword').style.display = 'block'
     }
   }
+  // 点击登录
+  loginClick = () => {
+    let phone1 = document.getElementsByClassName('phone')[0]
+    let phoneImg1 = document.getElementById('phoneImg')
+    if (phone1.value === '') {
+      phone1.style.border = '1px solid red'
+      phoneImg1.style.display = 'block'
+    } else {
+      if (!(/^1[34578]\d{9}$/.test(phone1.value))) {
+        phone1.style.border = '1px solid red'
+        phoneImg1.src = require('../assets/images/手机号码格式不正确.png')
+        phoneImg1.style.display = 'block'
+      } else {
+        let code = document.getElementById('login_yard_input')
+        if (this.state.isCodeClick && this.state.password === 'resign') {
+          if (code.value.length < 6) {
+            document.getElementById('login_yard_input').style.border = '1px solid red'
+            document.getElementById('codeImg').style.display = 'block'
+          }
+          if (code.value.length === 6) {
+            console.log('验证码登录')
+            fetch('/api/api/login_by_code', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                code: document.getElementById('login_yard_input').value,
+                phone: document.getElementsByClassName('phone')[0].value
+              })
+            })
+              .then(response => {
+                return response.json()
+              })
+              .then(response => {
+                if (response.status === 'ok') {
+                  alert('登录成功')
+                }
+                if (response.status === 'fail' && response.error.msg === '验证码错误') {
+                  alert('验证码错误')
+                  document.getElementById('login_yard').style.border = '1px solid red'
+                  document.getElementById('codeImg').style.display = 'block'
+                }
+              })
+          }
+        }
+        if (this.state.password === 'forget') {
+          if (code.value.length < 6) {
+            document.getElementById('login_yard_input').style.border = '1px solid red'
+            document.getElementById('codeImg').style.display = 'block'
+            document.getElementById('codeImg').src = require('../assets/images/密码错误.png')
+          }
+          if (code.value.length >= 6) {
+            fetch('/api/api/login_by_pass', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                password: document.getElementById('login_yard_input').value,
+                phone: document.getElementsByClassName('phone')[0].value
+              })
+            })
+              .then(response => {
+                return response.json()
+              })
+              .then(response => {
+                if (response.status === 'ok') {
+                  alert('登录成功')
+                }
+                if (response.status === 'fail' && response.error.msg === '验证码错误') {
+                  alert('密码错误')
+                  document.getElementById('login_yard').style.border = '1px solid red'
+                  document.getElementById('codeImg').style.display = 'block'
+                }
+              })
+          }
+        }
+      }
+    }
+  }
+  // 验证码焦点事件
+  codeFocus = () => {
+    document.getElementById('login_yard_input').style.border = ''
+    document.getElementById('codeImg').style.display = 'none'
+  }
   render() {
     return (
       <div id="login">
@@ -120,7 +213,8 @@ class Login extends Component {
               <img src={require('../assets/images/请填写手机号.png')} alt="" id="phoneImg" />
             </div>
             <div id="login_yard">
-              <input type="text" placeholder="验证码" id="login_yard_input" />
+              <input type="text" placeholder="验证码" id="login_yard_input" onFocus={this.codeFocus} />
+              <img src={require('../assets/images/验证码错误.png')} alt="" id="codeImg" />
               <button id="login_yard_btn" onClick={this.codeClick}><span id="codeTime">60</span><a href="#" id="codeContent">发送验证码</a></button>
             </div>
             <div id="login_register">
@@ -131,7 +225,7 @@ class Login extends Component {
               </div>
             </div>
             <div id="loginBtn">
-              <button><a href="#">登录</a></button>
+              <button onClick={this.loginClick}><a href="#">登录</a></button>
             </div>
           </div>
         </div>

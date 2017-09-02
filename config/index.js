@@ -16,6 +16,11 @@ module.exports = {
         changeOrigin: true,
         pathRewrite: {
           '/api': ''
+        },
+        headers: {
+          host: 'www.zuodesign.cn',
+          Referer: 'http://www.zuodesign.cn/',
+          Cookie: 'zuo_token=; zuo_token.sig=WM8s-puvxz07kkoNh4oRNmTv-DQ; Hm_lvt_683c542d518b09782eca65d69a1e9daf=1503965535,1504051764,1504140914,1504227105; Hm_lpvt_683c542d518b09782eca65d69a1e9daf=1504232110; zuo.sess=; zuo.sess.sig=OubC--l9e9C7M2IMOa5d5VLZT20'
         }
       }
     },

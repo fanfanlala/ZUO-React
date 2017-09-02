@@ -167,11 +167,11 @@ class loginRegister extends Component {
                 </button>
               </div>
               <div id="register-middle-three">
-                <input type="text" placeholder="密码" id="inputPass" onFocus={this.passOnFocus} />
+                <input type="password" placeholder="密码" id="inputPass" onFocus={this.passOnFocus} />
                 <img src={require('../assets/images/密码长度不小于6.png')} alt="" id="passImg" />
               </div>
               <div id="register-middle-four">
-                <input type="text" placeholder="确认密码" id="informPass" onFocus={this.rePassOnFocus} />
+                <input type="password" placeholder="确认密码" id="informPass" onFocus={this.rePassOnFocus} />
                 <img src={require('../assets/images/两次密码不一致.png')} alt="" id="rePassImg" />
               </div>
               <div id='userAgreement'>
