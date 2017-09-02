@@ -196,6 +196,11 @@ class Login extends Component {
       }
     }
   }
+  // 验证码焦点事件
+  codeFocus = () => {
+    document.getElementById('login_yard_input').style.border = ''
+    document.getElementById('codeImg').style.display = 'none'
+  }
   render() {
     return (
       <div id="login">
@@ -208,7 +213,7 @@ class Login extends Component {
               <img src={require('../assets/images/请填写手机号.png')} alt="" id="phoneImg" />
             </div>
             <div id="login_yard">
-              <input type="text" placeholder="验证码" id="login_yard_input" />
+              <input type="text" placeholder="验证码" id="login_yard_input" onFocus={this.codeFocus} />
               <img src={require('../assets/images/验证码错误.png')} alt="" id="codeImg" />
               <button id="login_yard_btn" onClick={this.codeClick}><span id="codeTime">60</span><a href="#" id="codeContent">发送验证码</a></button>
             </div>

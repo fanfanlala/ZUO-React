@@ -6,6 +6,10 @@ class Home extends Component {
   componentDidMount() {
     document.body.onscroll = this.returnTopScroll
   }
+  // 创建ZUO点击事件
+  createZuoClick = () => {
+    document.getElementById('register').style.display = 'block'
+  }
   // 滚轮到底部加载新的数据
   returnTopScroll = () => {
     if (document.body.scrollTop > 500) {
@@ -35,7 +39,7 @@ class Home extends Component {
                 <br />
                 <span className='subtip_2'>从设计的视角，重新认识世界</span>
               </div>
-              <button className='createZuo'>创建ZUO账号</button>
+              <button className='createZuo' onClick={this.createZuoClick}>创建ZUO账号</button>
               <div className='welcome_close' onClick={this.closeWelcome}>
                 <img src={require('../assets/images/false.png')} />
               </div>

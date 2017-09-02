@@ -10,6 +10,8 @@ class LoginHeader extends Component {
     document.getElementsByClassName('phone')[0].value = ''
     document.getElementById('phoneImg').style.display = 'none'
     document.getElementById('login_yard_input').value = ''
+    document.getElementById('login_yard_input').style.border = ''
+    document.getElementById('codeImg').style.display = 'none'
   }
   render () {
     return (
