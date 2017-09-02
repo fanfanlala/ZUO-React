@@ -54,10 +54,10 @@ class Article extends Component {
       return (
         <div className="more-content-every">
           <div>
-            <a href='#'><img src={item.banner} alt='' width={219} /></a>
+            <a href={'article.html?id=' + item.objectId}><img src={item.banner} alt='' width={219} /></a>
           </div>
           <div>
-            <div><a href='#'>{item.title}</a></div>
+            <div><a href={'article.html?id=' + item.objectId}>{item.title}</a></div>
             <div>
               <div>{item.author.name}</div>
               <div>{item.timeAgo}</div>

@@ -11,6 +11,7 @@ class App extends Component {
     return (
       <div>
         <Home />
+        <a href='article.html'>逗比代表</a>
       </div>
     )
   }
