@@ -3,6 +3,8 @@ import HomeHead from '../component/Home_head'
 import HomeFooter from '../component/Home_footer'
 import '../assets/styles/Home.styl'
 import '../assets/styles/foot+downloadApp.styl'
+import ClassComment from '../component/hotcomendClassCommend'
+import ClassTopic from '../component/hotcommendClassTopic'
 class Hotcommend extends Component {
   constructor (props) {
     super(props)
@@ -11,8 +13,8 @@ class Hotcommend extends Component {
       postsContent: [],
       classTags: '',
       classCommend: [],
-      classTopic: [],
-      classFollowee: [],
+      classTopicCollect: [],
+      classTopicTall: [],
       classFollower: []
     }
   }
@@ -73,17 +75,18 @@ class Hotcommend extends Component {
   }
   // 分类的点击事件
   commendClass = (e) => {
+    let commendTags = document.getElementsByClassName('commentTags')
+    for (var i = 0; i < commendTags.length; i++) {
+      commendTags[i].style.color = '#a0a1a1'
+      commendTags[i].style.cursor = 'pointer'
+    }
     let reg = /[\u4e00-\u9fa5]+/g
     let classTags = e.target.innerHTML.match(reg)[0]
     e.target.style.color = 'black'
     let commentPathClass = window.location.href.split('=')[1]
-    console.log(e.target.innerHTML.match(reg)[0])
     switch (classTags) {
       case '赞同':
-        this.setState({
-          classTags: 'post_by_user/likes'
-        })
-        fetch('/api/api/' + this.state.classTags + '?zuoId=' + commentPathClass, {
+        fetch('/api/api/post_by_user/likes?zuoId=' + commentPathClass, {
           method: 'Get'
         })
           .then(response => {
@@ -94,16 +97,48 @@ class Hotcommend extends Component {
               postsContent: response.posts
             })
           })
+        document.body.onscroll = this.scroll
         break
       case '评论':
-        this.setState({
-          classTags: 'comment_by_user'
+        fetch('/api/api/comment_by_user?zuoId=' + commentPathClass, {
+          method: 'Get'
         })
+          .then(response => {
+            return response.json()
+          })
+          .then(response => {
+            this.setState({
+              classCommend: response.comments
+            })
+          })
+        document.getElementById('commendContent').style.display = 'none'
+        document.getElementById('classCommend').style.display = 'block'
         break
       case '话题':
-        this.setState({
-          classTags: 'topic_comments_by_user'
+        fetch('/api/api/topic_by_user?zuoId=' + commentPathClass, {
+          method: 'Get'
         })
+          .then(response => {
+            return response.json()
+          })
+          .then(response => {
+            this.setState({
+              classTopicCollect: response.topics
+            })
+          })
+        fetch('/api/api/topic_comments_by_user?zuoId=' + commentPathClass, {
+          method: 'Get'
+        })
+          .then(response => {
+            return response.json()
+          })
+          .then(response => {
+            this.setState({
+              classTopicTall: response.comments
+            })
+          })
+        document.getElementById('commendContent').style.display = 'none'
+        document.getElementById('classTopic').style.display = 'block'
         break
       case '关注':
         this.setState({
@@ -146,11 +181,11 @@ class Hotcommend extends Component {
         </div>
         <div className="commendTags hotTagsContainer">
           <a href="#" >发布&nbsp;&nbsp;{this.state.userTitle.all_createposts_count}</a>
-          <a onClick={this.commendClass} >赞同&nbsp;&nbsp;{this.state.userTitle.all_likeposts_count}</a>
-          <a href="#" onClick={this.commendClass} >评论&nbsp;&nbsp;{this.state.userTitle.all_comments_count}</a>
-          <a href="#" onClick={this.commendClass} >话题&nbsp;&nbsp;{this.state.userTitle.all_topic_count}</a>
-          <a href="#" onClick={this.commendClass} >关注&nbsp;&nbsp;{this.state.userTitle.all_followees_count}</a>
-          <a href="#" onClick={this.commendClass} >粉丝&nbsp;&nbsp;{this.state.userTitle.all_followers_count}</a>
+          <a className="commentTags" onClick={this.commendClass} >赞同&nbsp;&nbsp;{this.state.userTitle.all_likeposts_count}</a>
+          <a className="commentTags" onClick={this.commendClass} >评论&nbsp;&nbsp;{this.state.userTitle.all_comments_count}</a>
+          <a className="commentTags" onClick={this.commendClass} >话题&nbsp;&nbsp;{this.state.userTitle.collect_topic_count}</a>
+          <a className="commentTags" onClick={this.commendClass} >关注&nbsp;&nbsp;{this.state.userTitle.all_followees_count}</a>
+          <a className="commentTags" onClick={this.commendClass} >粉丝&nbsp;&nbsp;{this.state.userTitle.all_followers_count}</a>
         </div>
       </div>
     ]
@@ -192,7 +227,11 @@ class Hotcommend extends Component {
         <HomeHead />
         {userArr}
         <div className="hotTagsContainer">
-          {contentArr}
+          <div id="commendContent">
+            {contentArr}
+          </div>
+          <ClassComment classCommend={this.state.classCommend} />
+          <ClassTopic classTopicCollect={this.state.classTopicCollect} classTopicTall={this.state.classTopicTall} />
         </div>
         <HomeFooter />
       </div>

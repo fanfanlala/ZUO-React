@@ -34,9 +34,9 @@ class Article extends Component {
   render () {
     const tagsArray = this.state.tags.map(function (item, index) {
       return (
-        <div id="article-title-tags">
+        <div id='article-title-tags'>
           <div />
-          <div><a href="#">{item.split(',')}</a></div>
+          <div><a href='#'>{item.split(',')}</a></div>
         </div>
       )
     })
@@ -47,35 +47,35 @@ class Article extends Component {
           <div id='article-title-text'>
             <div id='article-title-name'>{this.state.data.title}</div>
             <div id='article-title-label'>
-              <div id="article-title-sceneTagName">
+              <div id='article-title-sceneTagName'>
                 <div style={{backgroundColor: this.state.data.sceneTagColor}} />
-                <div><a href="#">{this.state.data.sceneTagName}</a></div>
+                <div><a href='#'>{this.state.data.sceneTagName}</a></div>
               </div>
               {tagsArray}
             </div>
-            <div id="writerMessage">
-              <div id="writerAndTime">
-                <a href="#">
-                  <img src={this.state.author.avatar} alt="" />
+            <div id='writerMessage'>
+              <div id='writerAndTime'>
+                <a href='#'>
+                  <img src={this.state.author.avatar} alt='' />
                   <span>{this.state.author.name}</span>
-                  <img src={require('../assets/images/i.png')} alt="" height={25} width={27} />
+                  <img src={require('../assets/images/i.png')} alt='' height={25} width={27} />
                 </a>
-                <span id="writerTime">
+                <span id='writerTime'>
                   {this.state.data.timeAgo}
                 </span>
               </div>
-              <div id="like-link">
-                <a href="#">
-                  <img src={require('../assets/images/xin.png')} alt="" />
-                  <span className="link">{this.state.data.likesCount}</span>
-                  <img src={require('../assets/images/hua.png')} alt="" />
-                  <span className="link">{this.state.data.commentCount}</span>
+              <div id='like-link'>
+                <a href='#'>
+                  <img src={require('../assets/images/xin.png')} alt='' />
+                  <span className='link'>{this.state.data.likesCount}</span>
+                  <img src={require('../assets/images/hua.png')} alt='' />
+                  <span className='link'>{this.state.data.commentCount}</span>
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div id="article-content">
+        <div id='article-content'>
           {this.state.data.content}
         </div>
       </div>
