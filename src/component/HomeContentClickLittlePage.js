@@ -11,7 +11,9 @@ class HomeContentClickLittlePage extends Component {
       user1: {},
       user2: {},
       user3: {},
-      user4: {}
+      user4: {},
+      sceneTag: {},
+      comments: []
     }
   }
   static propTypes = {
@@ -36,9 +38,10 @@ class HomeContentClickLittlePage extends Component {
             user1: response.post.likes[0],
             user2: response.post.likes[1],
             user3: response.post.likes[2],
-            user4: response.post.likes[3]
+            user4: response.post.likes[3],
+            sceneTag: response.post.sceneTag,
+            comments: response.post.comments
           })
-          console.log(response.post)
         })
     })
   }
@@ -46,8 +49,46 @@ class HomeContentClickLittlePage extends Component {
     var oWrap = document.getElementsByClassName('zuo-detail-modal')[0]
     oWrap.style.display = 'none'
   }
+
+  comment = (ev) => {
+    var input = ev.target
+    var textArea = document.createElement('textarea')
+    textArea.placeholder = '写下你的评论...'
+    textArea.className = 'comment-textarea'
+    ev.target.parentNode.appendChild(textArea)
+    var commentActions = document.createElement('div')
+    commentActions.className = 'add_comment_actions'
+    ev.target.parentNode.appendChild(commentActions)
+    var leftDiv = document.createElement('div')
+    leftDiv.className = 'cancel-new-comment'
+    commentActions.appendChild(leftDiv)
+    leftDiv.innerHTML = '取消'
+    var rightDiv = document.createElement('div')
+    rightDiv.className = 'post-new-comment'
+    rightDiv.innerHTML = '评论'
+    commentActions.appendChild(rightDiv)
+    ev.target.style.display = 'none'
+    leftDiv.onclick = function () {
+      input.style.display = 'block'
+      commentActions.style.display = 'none'
+      textArea.style.display = 'none'
+    }
+  }
   render () {
-    console.log(this.state.data)
+    var commentsArr = []
+    for (let i = 0; i < this.state.comments.length; i++) {
+      commentsArr.push(
+        <div className='comment-item'>
+          <div>{this.state.comments[i].author.username}</div>-
+          <div>{this.state.comments[i].text}</div>
+          <div className='comment-actions-1'>
+            <div className='time-1'>{this.state.comments[i].timeAgo}</div>
+            <div className='like-number'>点亮 {this.state.comments[i].likeNumber}<img src={require('../assets/images/灯 (1).png')} /></div>
+            <div className='reply-link'>回复</div>
+          </div>
+        </div>
+      )
+    }
     return (
       <div>
         <div className='zuo-detail-modal' >
@@ -56,7 +97,7 @@ class HomeContentClickLittlePage extends Component {
             <div className='zuo-detail-content'>
               <div className='zuo-detail-wrap'>
                 <div className='zuo-detail-container'>
-                  <div className='zuo-detail-overlay'>/</div>
+                  <div className='zuo-detail-overlay' />
                   <div className='detail-left-part'>
                     <div className='feed-top'>
                       <div className='top-inner'>
@@ -112,13 +153,19 @@ class HomeContentClickLittlePage extends Component {
                     </div>
                     <div className='detail-info'>
                       <div className='detail-middle'>
-                        <div className='feed-text'>{this.state.data.postDescription}</div>
-                        <div className='feed-tags-big'>、</div>
+                        <div className='feed-text-1'>{this.state.data.postDescription}</div>
+                        <div className='feed-tags-big'><div className='icon-tag-click' style={{backgroundColor: this.state.sceneTag.color}} /><span className='name'>{this.state.sceneTag.name}</span></div>
                       </div>
-                      <div className='comment-info'>/</div>
-                      <div className='comment-list'>/</div>
+                      <div className='comment-info'><img src={require('../assets/images/信息.png')} /><div className='comment-count'>{this.state.data.commentedCount}条评论</div></div>
+                      <div className='comment-list'>{commentsArr}</div>
                     </div>
-                    <div className='add-comment'>/</div>
+                    <div className='add-comment-1'>
+                      <div className='add-body-1'>
+                        <div className='input-wrap-1'>
+                          <input onClick={this.comment} type='text' placeholder='写下你的评论' />
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div style={{clear: 'both'}} />
                 </div>
