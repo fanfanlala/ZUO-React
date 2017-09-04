@@ -1,24 +1,25 @@
 *
   margin 0
   padding 0
-  box-sizing border-box
-body
-  font-size 400
+
 a
   text-decoration none
+
 #article-title-img
   height 400px
   position relative
   background-repeat no-repeat
   background-position center
   background-size cover
+
 #article-title-text
   position absolute
   top 0
   left 0
   width 100%
   height 400px
-  background-color rgba(0,0,0,.5)
+  background-color rgba(0, 0, 0, .5)
+
 #article-title-name
   color white
   width 680px
@@ -26,9 +27,10 @@ a
   margin 160px auto 0
   font-size 30px
   text-align center
+
 #article-title-label
   width 680px
-  border-bottom 1px solid rgba(255,255,255,.5)
+  border-bottom 1px solid rgba(255, 255, 255, .5)
   margin 0 auto
   padding 30px 0
   text-align center
@@ -36,31 +38,39 @@ a
     color #a6a7a7
     font-size 13px
     text-decoration none
+
 #article-title-sceneTagName
   display inline-block
   margin 0 10px
+
 #article-title-tags
   display inline-block
   margin 0 10px
+
 #article-title-sceneTagName div
   display inline-block
   margin 0 5px
+
 #article-title-tags div
   display inline-block
   margin 0 5px
-#article-title-sceneTagName>div:nth-child(1)
+
+#article-title-sceneTagName > div:nth-child(1)
   width 8px
   height 8px
   border-radius 8px
-#article-title-tags>div:nth-child(1)
+
+#article-title-tags > div:nth-child(1)
   background-color darkgrey
   width 8px
   height 8px
   border-radius 8px
+
 #writerMessage
   width 680px
   height 74px
   margin 0 auto
+
 #writerAndTime
   float left
   a
@@ -75,10 +85,12 @@ a
       margin 15px
     span
       margin 0 5px 0 0
+
 #writerTime
-  color rgba(255,255,255,.7)
+  color rgba(255, 255, 255, .7)
   padding-left 20px
   font-size 14px
+
 #like-link
   float right
   a
@@ -88,9 +100,11 @@ a
       vertical-align middle
     img:nth-child(3)
       padding-left 20px
+
 .link
   line-height 70px
   margin 0 10px
+
 #article-content
   width 670px
   margin 50px auto 20px
@@ -103,4 +117,138 @@ a
     margin 16px 0
   strong
     font-weight 700
+
+#article-like
+  width 670px
+  margin 50px auto 0
+  border-bottom 1px solid #DFDFE0
+#article-like::after
+  clear both
+  display block
+  content ''
+#article-like-left
+  float left
+#article-like-left a
+  color #a6a7a7
+  font-size 14px
+#article-like-left>div
+  float left
+#article-like-left>div:nth-child(2)
+  margin 20px 5px
+#article-like-left img
+  vertical-align middle
+  margin 18px 5px
+#article-like-right
+  float right
+  width 250px
+#article-like-right>div
+  float left
+#article-like-right>div:nth-child(1)
+  margin 20px 5px
+  font-size 14px
+#article-like-right img
+  vertical-align middle
+  margin 17px 10px
+#article-count
+  width 670px
+  border-bottom 1px solid #DFDFE0
+  margin 0 auto
+#article-count::after
+  clear both
+  display block
+  content ''
+#article-count>div
+  float left
+#article-count img
+  margin 20px 5px
+  vertical-align middle
+#article-count>div:nth-child(2)
+  font-size 14px
+  color #a6a7a7
+  margin 20px 10px
+  font-weight 700
+.everyComment
+  width 670px
+  margin 0 auto
+.everyComment img
+  width 40px
+  height 40px
+  border-radius 20px
+  margin-top 20px
+.everyComment::after
+  clear both
+  display block
+  content ''
+.everyComment-img
+  float left
+.everyComment-content
+  float left
+  margin 20px 0 0 20px
+  padding-bottom 20px
+  width 610px
+  border-bottom 1px solid #DFDFE0
+  font-size 14px
+
+.everyComment-content>div:nth-child(1)
+  margin 5px 0
+  a
+    color #a6a7a7
+    font-size 14px
+.everyComment-content>div:nth-child(3)
+  font-size 10px
+  color #a6a7a7
+  margin-top 5px
+#article-author
+  position: fixed
+  top 0
+  left 0
+  right 0
+  bottom 0
+  width 100%
+  height 100%
+  background-color rgba(39,44,47,.9)
+  z-index 10000
+  display none
+#article-author-content
+  width 540px
+  background-color white
+  position fixed
+  top 100px
+  left 50%
+  margin-left -270px
+  text-align center
+  padding 30px
+  border-radius 4px
+  div:nth-child(1) img
+    width 100px
+    height 100px
+    border-radius 100px
+  div:nth-child(2)
+    color #272c2f
+    font-size 24px
+    font-weight 700
+    margin 10px
+  div:nth-child(3)
+    margin 10px 0 20px
+  div:nth-child(3) span
+    background-color #a6a7a7
+    color white
+    font-weight 700
+    font-size 18px
+    padding 5px 10px
+    border-radius 4px
+  div:nth-child(4)
+    margin 18px
+    font-size 16px
+    color #a6a7a7
+  div:nth-child(5)
+    border-top 1px solid #ececec
+    padding-top 20px
+  div:nth-child(5)>a
+    margin 10px 20px 20px
+  div:nth-child(5)>a>img
+    vertical-align middle
+#article-author-content strong
+  color black
+  margin-left 5px
 
