@@ -26,16 +26,16 @@ class Read extends Component {
       var color = item.sceneTagColor
       return (
         <div className='read'>
-          <a href='#'><img src={item.banner} alt='' /></a>
+          <a href={'article.html?id=' + item.objectId}><img src={item.banner} alt='' /></a>
           <div className='read-content'>
             <div>
-              <div><p><a href='#'>{item.title}</a></p></div>
-              <div><p><a href='#'>{item.summary}</a></p></div>
+              <div><p><a href={'article.html?id=' + item.objectId}>{item.title}</a></p></div>
+              <div><p><a href={'article.html?id=' + item.objectId}>{item.summary}</a></p></div>
             </div>
             <div>
               <div style={{background: color}} />
               <div><a href='#'>{item.sceneTagName}</a></div>
-              <div><a href='#'>{item.timeAgo}</a></div>
+              <div><a href={'article.html?id=' + item.objectId}>{item.timeAgo}</a></div>
             </div>
           </div>
         </div>
