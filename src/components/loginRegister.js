@@ -72,7 +72,6 @@ class loginRegister extends Component {
   }
   // 协议的点击事件
   checkOnFocus = () => {
-    console.log('popop')
     if (document.getElementById('check').checked) {
       document.getElementById('resignSubmit').style.opacity = '1'
     } else {
@@ -103,7 +102,6 @@ class loginRegister extends Component {
             document.getElementById('rePassImg').style.display = 'block'
           } else {
             if (document.getElementById('check').checked) {
-              console.log('注册啦')
               fetch('/api/api/signup', {
                 method: 'POST',
                 headers: {

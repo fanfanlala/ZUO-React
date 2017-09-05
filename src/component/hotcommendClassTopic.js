@@ -23,7 +23,6 @@ class ClassTopic extends Component {
   }
   componentDidUpdate () {
     let tallTitleWord = document.getElementsByClassName('tallTitle')[0]
-    console.log(tallTitleWord)
     if (tallTitleWord !== undefined) {
       var content = document.getElementsByClassName('tallTitle')[0].innerText
       document.getElementsByClassName('tallTitle')[0].innerHTML = content
@@ -63,7 +62,7 @@ class ClassTopic extends Component {
       ]
     }
     return (
-      <div id="classTopic">
+      <div id="classTopic" style={{display: 'none'}}>
         <div className="classTopic-title">收藏的话题</div>
         {topicCollectArr}
         <div className="classTopic-title">参与讨论的话题</div>
