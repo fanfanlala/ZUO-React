@@ -5,6 +5,8 @@ import '../assets/styles/Home.styl'
 import '../assets/styles/foot+downloadApp.styl'
 import ClassComment from '../component/hotcomendClassCommend'
 import ClassTopic from '../component/hotcommendClassTopic'
+import ClassFollows from '../component/hotcommendClassFollows'
+import HomeLittlePage from '../component/HomeContentClickLittlePage'
 class Hotcommend extends Component {
   constructor (props) {
     super(props)
@@ -15,7 +17,10 @@ class Hotcommend extends Component {
       classCommend: [],
       classTopicCollect: [],
       classTopicTall: [],
-      classFollower: []
+      classFollower: [],
+      page: 1,
+      createID: '',
+      style: ''
     }
   }
   componentDidMount () {
@@ -46,6 +51,7 @@ class Hotcommend extends Component {
       })
     document.body.onscroll = this.scroll
   }
+  // 滚轮滚到底部加载数据
   scroll = () => {
     if (document.body.scrollTop > 500) {
       let returnTop = document.getElementById('returnTop')
@@ -75,6 +81,10 @@ class Hotcommend extends Component {
   }
   // 分类的点击事件
   commendClass = (e) => {
+    document.getElementById('classCommend').style.display = 'none'
+    document.getElementById('classTopic').style.display = 'none'
+    document.getElementById('classFollows').style.display = 'none'
+    document.getElementById('commendContent').style.display = 'none'
     let commendTags = document.getElementsByClassName('commentTags')
     for (var i = 0; i < commendTags.length; i++) {
       commendTags[i].style.color = '#a0a1a1'
@@ -85,6 +95,21 @@ class Hotcommend extends Component {
     e.target.style.color = 'black'
     let commentPathClass = window.location.href.split('=')[1]
     switch (classTags) {
+      case '发布':
+        fetch('/api/api/post_by_user?zuoId=' + commentPathClass, {
+          method: 'Get'
+        })
+          .then(response => {
+            return response.json()
+          })
+          .then(response => {
+            this.setState({
+              postsContent: response.posts
+            })
+          })
+        document.getElementById('commendContent').style.display = 'block'
+        document.body.onscroll = this.scroll
+        break
       case '赞同':
         fetch('/api/api/post_by_user/likes?zuoId=' + commentPathClass, {
           method: 'Get'
@@ -97,6 +122,7 @@ class Hotcommend extends Component {
               postsContent: response.posts
             })
           })
+        document.getElementById('commendContent').style.display = 'block'
         document.body.onscroll = this.scroll
         break
       case '评论':
@@ -113,6 +139,7 @@ class Hotcommend extends Component {
           })
         document.getElementById('commendContent').style.display = 'none'
         document.getElementById('classCommend').style.display = 'block'
+        document.body.onscroll = this.commendScroll
         break
       case '话题':
         fetch('/api/api/topic_by_user?zuoId=' + commentPathClass, {
@@ -141,18 +168,120 @@ class Hotcommend extends Component {
         document.getElementById('classTopic').style.display = 'block'
         break
       case '关注':
-        this.setState({
-          classTags: 'followee_by_user'
+        fetch('/api/api/followee_by_user?zuoId=' + commentPathClass, {
+          method: 'Get'
         })
+          .then(response => {
+            return response.json()
+          })
+          .then(response => {
+            this.setState({
+              classFollower: response.follows
+            })
+          })
+        document.getElementById('commendContent').style.display = 'none'
+        document.getElementById('classFollows').style.display = 'block'
+        document.body.onscroll = this.follweeScroll
         break
       case '粉丝':
-        this.setState({
-          classTags: 'follower_by_user'
+        fetch('/api/api/follower_by_user?zuoId=' + commentPathClass, {
+          method: 'Get'
         })
+          .then(response => {
+            return response.json()
+          })
+          .then(response => {
+            this.setState({
+              classFollower: response.follows
+            })
+          })
+        document.getElementById('commendContent').style.display = 'none'
+        document.getElementById('classFollows').style.display = 'block'
+        document.body.onscroll = this.followScroll
         break
     }
   }
-
+  // 点击弹出小页面
+  tagClicks = (e) => {
+    this.setState({
+      createID: e.target.id,
+      style: 'block'
+    })
+  }
+  // 点X关闭
+  clickCloses = () => {
+    this.setState({
+      style: 'none'
+    })
+  }
+  // 评论的滚轮事件
+  commendScroll = () => {
+    if (document.body.scrollTop + document.documentElement.clientHeight === document.body.scrollHeight && document.body.scrollTop > 1000) {
+      let commentPaths = window.location.href.split('=')[1]
+      const newContentArr = this.state.classCommend
+      const newPath = newContentArr[newContentArr.length - 1].createdAt
+      fetch('/api/api/comment_by_user?zuoId=' + commentPaths + '&after=' + newPath, {
+        method: 'Get'
+      })
+        .then(response => {
+          return response.json()
+        })
+        .then(response => {
+          if (!response.has_text) {
+            this.setState({
+              classCommend: this.state.classCommend.concat(response.comments)
+            })
+          }
+        })
+    }
+  }
+  // 关注滚轮事件
+  follweeScroll = () => {
+    if (document.body.scrollTop + document.documentElement.clientHeight === document.body.scrollHeight) {
+      this.setState({
+        page: this.state.page + 1
+      })
+      let commentPaths = window.location.href.split('=')[1]
+      fetch('/api/api/followee_by_user?zuoId=' + commentPaths + '&page=' + this.state.page, {
+        method: 'Get'
+      })
+        .then(response => {
+          return response.json()
+        })
+        .then(response => {
+          console.log(response)
+          if (response.has_next) {
+            this.setState({
+              classFollower: this.state.classFollower.concat(response.follows)
+            })
+          }
+        })
+    }
+  }
+  // 粉丝的滚轮事件
+  followScroll = () => {
+    if (document.body.scrollTop + document.documentElement.clientHeight === document.body.scrollHeight) {
+      this.setState({
+        page: this.state.page + 1
+      })
+      console.log(this.state.page)
+      let commentPaths = window.location.href.split('=')[1]
+      fetch('/api/api/follower_by_user?zuoId=' + commentPaths + '&page=' + this.state.page, {
+        method: 'Get'
+      })
+        .then(response => {
+          return response.json()
+        })
+        .then(response => {
+          console.log(response)
+          if (response.has_next) {
+            this.setState({
+              classFollower: this.state.classFollower.concat(response.follows)
+            })
+          }
+        })
+    }
+  }
   render () {
     // 推荐关注二级页面的title数据解析
     let userArr = [
@@ -165,6 +294,7 @@ class Hotcommend extends Component {
             <div className="commendUser-nameImg left clearFloat">
               <div className="commendUser-nameImg-mark left">
                 <img src={this.state.userTitle.avatar} width={130} height={130} />
+                <img src={(this.state.userTitle.userRole === 'professional') ? require('../assets/images/P.png') : require('../assets/images/C.png')} alt="" className="everyCommentUserRole" style={(this.state.userTitle.userRole === 'professional') ? {'left': '110'} : {'left': '-5'}} width={36} height={36} />
               </div>
               <div className="left commendUser-information">
                 <span>{this.state.userTitle.username}</span>
@@ -180,7 +310,7 @@ class Hotcommend extends Component {
           </div>
         </div>
         <div className="commendTags hotTagsContainer">
-          <a href="#" >发布&nbsp;&nbsp;{this.state.userTitle.all_createposts_count}</a>
+          <a className="commentTags" onClick={this.commendClass}>发布&nbsp;&nbsp;{this.state.userTitle.all_createposts_count}</a>
           <a className="commentTags" onClick={this.commendClass} >赞同&nbsp;&nbsp;{this.state.userTitle.all_likeposts_count}</a>
           <a className="commentTags" onClick={this.commendClass} >评论&nbsp;&nbsp;{this.state.userTitle.all_comments_count}</a>
           <a className="commentTags" onClick={this.commendClass} >话题&nbsp;&nbsp;{this.state.userTitle.collect_topic_count}</a>
@@ -190,14 +320,14 @@ class Hotcommend extends Component {
       </div>
     ]
 // 推荐关注二级页面的内容的数据解析
-    let contentArr = this.state.postsContent.map(function (item, index) {
+    let contentArr = this.state.postsContent.map((item, index) => {
       var array = item.tags || []
       var tagsArr = array.length !== 0 ? item.tags[0] : ''
       return (
         <div className='hotZuo commendContent'>
           <div className='hotZuo-Img'>
             <img src={item.postImage.url} width={219} height={219} />
-            <div className='hotZuo-mark commendContent-mark' />
+            <div className='hotZuo-mark commendContent-mark' onClick={this.tagClicks} id={item.objectId} />
           </div>
           <div className='hotZuo-tags'>
             <div style={{background: item.sceneTag.color}} />
@@ -232,7 +362,9 @@ class Hotcommend extends Component {
           </div>
           <ClassComment classCommend={this.state.classCommend} />
           <ClassTopic classTopicCollect={this.state.classTopicCollect} classTopicTall={this.state.classTopicTall} />
+          <ClassFollows classFollower={this.state.classFollower} />
         </div>
+        <HomeLittlePage projectId={this.state.createID} style={this.state.style} click={this.clickCloses} />
         <HomeFooter />
       </div>
     )

@@ -23,20 +23,22 @@ class ClassTopic extends Component {
   }
   componentDidUpdate () {
     let tallTitleWord = document.getElementsByClassName('tallTitle')[0]
-    console.log(tallTitleWord)
     if (tallTitleWord !== undefined) {
       var content = document.getElementsByClassName('tallTitle')[0].innerText
       document.getElementsByClassName('tallTitle')[0].innerHTML = content
     }
+  }
+  topicClick = () => {
+    window.location.href = 'stationery.html'
   }
   render () {
     let topicCollect = this.state.collect
     let topicTall = this.state.tall
     if (topicCollect.length > 0) {
       var topicCollectArr = [
-        <div className="topic">
-          <div className="topicMark" />
-          <img src={topicCollect[0].cover} width={450} height={166} alt="" />
+        <div className="topic" >
+          <div className="topicMark" onClick={this.topicClick} />
+          <img src={topicCollect[0].cover} width={450} height={166} />
           <div className="topicContent">
             <div className="topic-smallTitle">话题</div>
             <div className="topic-line" />
@@ -63,7 +65,7 @@ class ClassTopic extends Component {
       ]
     }
     return (
-      <div id="classTopic">
+      <div id="classTopic" style={{display: 'none'}}>
         <div className="classTopic-title">收藏的话题</div>
         {topicCollectArr}
         <div className="classTopic-title">参与讨论的话题</div>
