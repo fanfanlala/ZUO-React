@@ -19,7 +19,8 @@ class Hotcommend extends Component {
       classTopicTall: [],
       classFollower: [],
       page: 1,
-      createID: ''
+      createID: '',
+      style: ''
     }
   }
   componentDidMount () {
@@ -202,11 +203,16 @@ class Hotcommend extends Component {
   }
   // 点击弹出小页面
   tagClicks = (e) => {
-    console.log(e.target)
     this.setState({
-      createID: e.target.id
+      createID: e.target.id,
+      style: 'block'
     })
-    document.getElementsByClassName('zuo-detail-modal')[0].style.display = 'block'
+  }
+  // 点X关闭
+  clickCloses = () => {
+    this.setState({
+      style: 'none'
+    })
   }
   // 评论的滚轮事件
   commendScroll = () => {
@@ -358,7 +364,7 @@ class Hotcommend extends Component {
           <ClassTopic classTopicCollect={this.state.classTopicCollect} classTopicTall={this.state.classTopicTall} />
           <ClassFollows classFollower={this.state.classFollower} />
         </div>
-        <HomeLittlePage projectId={this.state.createID} />
+        <HomeLittlePage projectId={this.state.createID} style={this.state.style} click={this.clickCloses} />
         <HomeFooter />
       </div>
     )

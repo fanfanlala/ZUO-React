@@ -17,39 +17,43 @@ class HomeContentClickLittlePage extends Component {
     }
   }
   static propTypes = {
-    projectId: React.PropTypes.string
+    projectId: React.PropTypes.string,
+    style: React.PropTypes.string,
+    click: React.PropTypes.func
   }
   componentWillReceiveProps () {
     this.setState({
       data: {}
     }, () => {
-      fetch('/api/api/post/' + this.props.projectId, {
-        method: 'GET'
-      })
-        .then(response => {
-          return response.json()
+      if (this.props.projectId !== '') {
+        console.log(this.props.projectId)
+        fetch('/api/api/post/' + this.props.projectId, {
+          method: 'GET'
         })
-        .then(response => {
-          this.setState({
-            data: response.post,
-            owner: response.post.owner,
-            postImage: response.post.postImage,
-            haloCenterRatio: response.post.haloCenterRatio,
-            user1: response.post.likes[0],
-            user2: response.post.likes[1],
-            user3: response.post.likes[2],
-            user4: response.post.likes[3],
-            sceneTag: response.post.sceneTag,
-            comments: response.post.comments
+          .then(response => {
+            return response.json()
           })
-        })
+          .then(response => {
+            this.setState({
+              data: response.post,
+              owner: response.post.owner,
+              postImage: response.post.postImage,
+              haloCenterRatio: response.post.haloCenterRatio,
+              user1: response.post.likes[0],
+              user2: response.post.likes[1],
+              user3: response.post.likes[2],
+              user4: response.post.likes[3],
+              sceneTag: response.post.sceneTag,
+              comments: response.post.comments
+            })
+          })
+      }
     })
   }
   clickClose = () => {
     var oWrap = document.getElementsByClassName('zuo-detail-modal')[0]
     oWrap.style.display = 'none'
   }
-
   comment = (ev) => {
     var input = ev.target
     var textArea = document.createElement('textarea')
@@ -91,9 +95,9 @@ class HomeContentClickLittlePage extends Component {
     }
     return (
       <div>
-        <div className='zuo-detail-modal' >
+        <div className='zuo-detail-modal' style={{display: this.props.style}}>
           <div className='zuo-detail-body'>
-            <div className='icon-iconhomeclose' onClick={this.clickClose}><img src={require('../assets/images/false.png')} /></div>
+            <div className='icon-iconhomeclose' onClick={this.clickClose}><img src={require('../assets/images/false.png')} onClick={this.props.click} /></div>
             <div className='zuo-detail-content'>
               <div className='zuo-detail-wrap'>
                 <div className='zuo-detail-container'>
