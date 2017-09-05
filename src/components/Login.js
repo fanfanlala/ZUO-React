@@ -141,6 +141,7 @@ class Login extends Component {
               headers: {
                 'Content-Type': 'application/json'
               },
+              credentials: 'include',
               body: JSON.stringify({
                 code: document.getElementById('login_yard_input').value,
                 phone: document.getElementsByClassName('phone')[0].value
@@ -152,6 +153,7 @@ class Login extends Component {
               .then(response => {
                 if (response.status === 'ok') {
                   alert('登录成功')
+                  window.cookie = response.headers.Cookie
                 }
                 if (response.status === 'fail' && response.error.msg === '验证码错误') {
                   alert('验证码错误')
@@ -173,17 +175,21 @@ class Login extends Component {
               headers: {
                 'Content-Type': 'application/json'
               },
+              credentials: 'include',
               body: JSON.stringify({
                 password: document.getElementById('login_yard_input').value,
                 phone: document.getElementsByClassName('phone')[0].value
               })
             })
               .then(response => {
+                console.log(response.headers.get('set-cookie'))
                 return response.json()
               })
               .then(response => {
                 if (response.status === 'ok') {
                   alert('登录成功')
+                  // window.cookie = response.headers.Cookie
+                  console.log(response.headers)
                 }
                 if (response.status === 'fail' && response.error.msg === '验证码错误') {
                   alert('密码错误')
