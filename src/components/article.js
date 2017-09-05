@@ -44,11 +44,11 @@ class Article extends Component {
     var content = document.getElementById('article-content').innerText
     document.getElementById('article-content').innerHTML = content
   }
-  // 点击显示作者详情
+  // 点击显示作者详情代码
   author = () => {
     document.getElementById('article-author').style.display = 'block'
   }
-  // 点击关闭作者详情
+  // 点击关闭作者详情代码
   closeAuthor = () => {
     document.getElementById('article-author').style.display = 'none'
   }
