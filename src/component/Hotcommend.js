@@ -6,6 +6,7 @@ import '../assets/styles/foot+downloadApp.styl'
 import ClassComment from '../component/hotcomendClassCommend'
 import ClassTopic from '../component/hotcommendClassTopic'
 import ClassFollows from '../component/hotcommendClassFollows'
+import HomeLittlePage from '../component/HomeContentClickLittlePage'
 class Hotcommend extends Component {
   constructor (props) {
     super(props)
@@ -17,7 +18,8 @@ class Hotcommend extends Component {
       classTopicCollect: [],
       classTopicTall: [],
       classFollower: [],
-      page: 1
+      page: 1,
+      createID: ''
     }
   }
   componentDidMount () {
@@ -198,6 +200,14 @@ class Hotcommend extends Component {
         break
     }
   }
+  // 点击弹出小页面
+  tagClicks = (e) => {
+    console.log(e.target.id)
+    this.setState({
+      createID: e.target.id
+    })
+    document.getElementsByClassName('zuo-detail-modal')[0].style.display = 'block'
+  }
   // 评论的滚轮事件
   commendScroll = () => {
     if (document.body.scrollTop + document.documentElement.clientHeight === document.body.scrollHeight && document.body.scrollTop > 1000) {
@@ -225,7 +235,6 @@ class Hotcommend extends Component {
       this.setState({
         page: this.state.page + 1
       })
-      console.log(this.state.page)
       let commentPaths = window.location.href.split('=')[1]
       fetch('/api/api/followee_by_user?zuoId=' + commentPaths + '&page=' + this.state.page, {
         method: 'Get'
@@ -279,6 +288,7 @@ class Hotcommend extends Component {
             <div className="commendUser-nameImg left clearFloat">
               <div className="commendUser-nameImg-mark left">
                 <img src={this.state.userTitle.avatar} width={130} height={130} />
+                <img src={(this.state.userTitle.userRole === 'professional') ? require('../assets/images/P.png') : require('../assets/images/C.png')} alt="" className="everyCommentUserRole" style={(this.state.userTitle.userRole === 'professional') ? {'left': '110'} : {'left': '-5'}} width={36} height={36} />
               </div>
               <div className="left commendUser-information">
                 <span>{this.state.userTitle.username}</span>
@@ -304,14 +314,14 @@ class Hotcommend extends Component {
       </div>
     ]
 // 推荐关注二级页面的内容的数据解析
-    let contentArr = this.state.postsContent.map(function (item, index) {
+    let contentArr = this.state.postsContent.map((item, index) => {
       var array = item.tags || []
       var tagsArr = array.length !== 0 ? item.tags[0] : ''
       return (
         <div className='hotZuo commendContent'>
           <div className='hotZuo-Img'>
             <img src={item.postImage.url} width={219} height={219} />
-            <div className='hotZuo-mark commendContent-mark' />
+            <div className='hotZuo-mark commendContent-mark' onClick={this.tagClicks} id={item.objectId} />
           </div>
           <div className='hotZuo-tags'>
             <div style={{background: item.sceneTag.color}} />
@@ -348,6 +358,7 @@ class Hotcommend extends Component {
           <ClassTopic classTopicCollect={this.state.classTopicCollect} classTopicTall={this.state.classTopicTall} />
           <ClassFollows classFollower={this.state.classFollower} />
         </div>
+        <HomeLittlePage projectId={this.state.createID} />
         <HomeFooter />
       </div>
     )
