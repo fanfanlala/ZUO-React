@@ -202,7 +202,7 @@ class Hotcommend extends Component {
   }
   // 点击弹出小页面
   tagClicks = (e) => {
-    console.log(e.target.id)
+    console.log(e.target)
     this.setState({
       createID: e.target.id
     })
