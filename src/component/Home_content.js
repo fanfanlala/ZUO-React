@@ -292,10 +292,13 @@ class HomeContent extends Component {
       }
       arr.push(
         <div className='zuo-feed'>
+          <img src={(this.state.data[i]['owner'].userRole === 'professional') ? require('../assets/images/P.png') : require('../assets/images/C.png')} alt="" style={(this.state.data[i]['owner'].userRole === 'professional') ? {'left': '50'} : {'left': '10'}} className="owner-userRole" />
           <div className='zuo-feed_top'>
             <div className='zuo-feed-top-inner'>
               <div className='owner-info'>
-                <div className='owner-avatar'><img src={this.state.data[i]['owner'].avatar} /></div>
+                <div className='owner-avatar'>
+                  <img src={this.state.data[i]['owner'].avatar} />
+                </div>
                 <div className='owner-name'>
                   <a href='#'>{this.state.data[i]['owner'].username}</a>
                 </div>

@@ -18,7 +18,10 @@ class ArticleComment extends Component {
     const commentsArray = this.state.commentsArr.map(function (item) {
       return (
         <div className="everyComment">
-          <div className="everyComment-img"><img src={item.author.avatar} alt="" /></div>
+          <div className="everyComment-img">
+            <img src={(item.author.avatar === '/static/images/avatar.jpg') ? require('../assets/images/avatar.jpg') : item.author.avatar} />
+            <img src={(item.author.userRole === 'professional') ? require('../assets/images/P.png') : require('../assets/images/C.png')} alt="" style={(item.author.userRole === 'professional') ? {'left': '3'} : {'right': '3'}} />
+          </div>
           <div className="everyComment-content">
             <div><a href="#">{item.author.username}</a></div>
             <div>{item.text}</div>

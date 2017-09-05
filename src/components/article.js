@@ -39,13 +39,16 @@ class Article extends Component {
       returnTop.style.opacity = '0'
     }
   }
+  // 把获取的文本转换成代码
   componentDidUpdate () {
     var content = document.getElementById('article-content').innerText
     document.getElementById('article-content').innerHTML = content
   }
+  // 点击显示作者详情
   author = () => {
     document.getElementById('article-author').style.display = 'block'
   }
+  // 点击关闭作者详情
   closeAuthor = () => {
     document.getElementById('article-author').style.display = 'none'
   }

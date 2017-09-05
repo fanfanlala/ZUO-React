@@ -170,17 +170,27 @@ a
 .everyComment
   width 670px
   margin 0 auto
-.everyComment img
-  width 40px
-  height 40px
-  border-radius 20px
-  margin-top 20px
 .everyComment::after
   clear both
   display block
   content ''
 .everyComment-img
   float left
+  position relative
+.everyComment-img>img:nth-child(1)
+  width 40px
+  height 40px
+  border-radius 20px
+  margin-top 20px
+.everyComment-img>img:nth-child(2)
+  width 16px
+  height 16px
+.everyCommentUserRole
+  position absolute
+  top 20px
+  //right -5px
+  width 16px
+  height 16px
 .everyComment-content
   float left
   margin 20px 0 0 20px
