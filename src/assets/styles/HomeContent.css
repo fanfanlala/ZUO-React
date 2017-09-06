@@ -94,10 +94,6 @@ i img {
   height: 100%;
   float: left;
 }
-.zuo-feed_top .zuo-feed-top-inner .owner-info .owner-avatar img {
-  height: 100%;
-  border-radius: 50%;
-}
 .zuo-feed_top .zuo-feed-top-inner .owner-info .owner-name {
   margin-top: 10px;
   padding-left: 10px;
@@ -112,6 +108,17 @@ i img {
 .zuo-feed_top .zuo-feed-top-inner .feed-right-actions {
   margin-top: 10px;
   float: right;
+}
+.owner-avatar>img:nth-child(1) {
+  height: 100%;
+  border-radius: 50%;
+}
+.owner-userRole {
+  position: absolute;
+  top: 10px;
+  width: 16px;
+  height: 16px;
+  z-index: 1400;
 }
 .feed-right-actions-icon {
   display: inline-block;

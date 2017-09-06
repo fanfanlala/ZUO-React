@@ -96,9 +96,20 @@ class HomeContent extends Component {
       // console.log(response.config)
     })
     // ======分割线======
-    // ev.target.style.display = 'block'
-    // document.createElement('div').style.display = 'none'
-    // document.createElement('textarea').style.display = 'none'
+    var textarea = document.getElementsByClassName('comment-textarea')[0]
+    var addComment = document.getElementsByClassName('add_comment_actions')[0]
+    var thisParents = ev.target.parentNode.parentNode
+    textarea.style.display = 'none'
+    addComment.style.display = 'none'
+    var newInput = document.createElement('input')
+    thisParents.appendChild(newInput)
+    newInput.className = 'new-comment'
+    newInput.placeholder = '写下你的评论...'
+    console.log(ev.target.parentNode.parentNode.parentNode.previousSibling.childNodes[2])
+    var commentsParents = ev.target.parentNode.parentNode.parentNode.previousSibling.childNodes[2]
+    var newLi = document.createElement('li')
+    newLi.innerHTML = ev.target.parentNode.previousSibling.value
+    commentsParents.insertBefore(newLi, ev.target.parentNode.parentNode.parentNode.previousSibling.childNodes[2].childNodes[2])
   }
 
   clickMore = () => {
