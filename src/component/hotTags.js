@@ -5,6 +5,7 @@ import '../assets/styles/foot+downloadApp.styl'
 import searchImg from '../assets/images/搜索.png'
 import HomeHead from '../component/Home_head'
 import HomeFooter from '../component/Home_footer'
+import HomeLittlePage from '../component/HomeContentClickLittlePage'
 class HotTags extends Component {
   constructor (props) {
     super(props)
@@ -12,7 +13,8 @@ class HotTags extends Component {
       emptyDate: [],
       articlesDate: [],
       usersDate: [],
-      postsDate: []
+      postsDate: [],
+      createId: ''
     }
   }
 
@@ -62,12 +64,18 @@ class HotTags extends Component {
         return response.json()
       })
       .then(response => {
-        console.log(response.posts)
         this.setState({
           postsDate: response.posts
         })
       })
     document.body.onscroll = this.returnTopScroll
+  }
+  // 点击弹出小页面
+  tagClick = (e) => {
+    this.setState({
+      createId: e.target.id
+    })
+    document.getElementsByClassName('zuo-detail-modal')[0].style.display = 'block'
   }
   // 返回顶部滚轮判断是否显示
   returnTopScroll = () => {
@@ -79,7 +87,6 @@ class HotTags extends Component {
       returnTop.style.opacity = '0'
     }
   }
-
   render () {
     // 搜索的数据解析
     // let empty = this.state.emptyDate.q > 0 ? this.state.emptyDate : false
@@ -146,7 +153,7 @@ class HotTags extends Component {
     articlesArr = this.state.articlesDate > 0 ? articlesArr : ''
     // 相关ZUO数据解析
     let postArr = [
-      <div className='hotTagsContainer'><span className='hotArticle-title'>相关ZUO</span></div>, this.state.postsDate.map(function (item, index) {
+      <div className='hotTagsContainer'><span className='hotArticle-title'>相关ZUO</span></div>, this.state.postsDate.map((item, index) => {
         const array = item.tags || []
         var tagsArr = array.length !== 0 ? item.tags[0] : ''
         return (
@@ -157,7 +164,7 @@ class HotTags extends Component {
             </div>
             <div className='hotZuo-Img'>
               <img src={item.postImage.url} width={219} height={219} />
-              <div className='hotZuo-mark' />
+              <div className='hotZuo-mark' onClick={this.tagClick} id={item.objectId} />
             </div>
             <div className='hotZuo-tags'>
               <div style={{background: item.sceneTag.color}} />
@@ -192,6 +199,7 @@ class HotTags extends Component {
             {articlesArr}
             {postArr}
           </div>
+          <HomeLittlePage projectId={this.state.createId} />
           <HomeFooter />
         </div>
       </div>

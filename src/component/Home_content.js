@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import HomeContentClickLittlePage from './HomeContentClickLittlePage'
+var axios = require('axios')
 
 class HomeContent extends Component {
   constructor (props) {
@@ -69,6 +70,7 @@ class HomeContent extends Component {
     var rightDiv = document.createElement('div')
     rightDiv.className = 'post-new-comment'
     rightDiv.innerHTML = '评论'
+    rightDiv.onclick = this.addComment
     commentActions.appendChild(rightDiv)
     ev.target.style.display = 'none'
     leftDiv.onclick = function () {
@@ -76,6 +78,27 @@ class HomeContent extends Component {
       commentActions.style.display = 'none'
       textArea.style.display = 'none'
     }
+  }
+
+  addComment = (ev) => {
+    console.log(ev.target.parentNode.previousSibling.value)
+    var comment = ev.target.parentNode.parentNode.parentNode.parentNode.previousSibling.childNodes[2].id
+    var url = '/api/api/post/' + comment + '/add_comment'
+    axios.defaults.headers.post['Content-Type'] = 'application/json'
+    axios.post(url, JSON.stringify({
+      isReplay: false,
+      text: ev.target.parentNode.previousSibling.value
+    })).then(function (response) {
+      console.log(response.data)
+      // console.log(response.status)
+      // console.log(response.statusText)
+      // console.log(response.headers)
+      // console.log(response.config)
+    })
+    // ======分割线======
+    // ev.target.style.display = 'block'
+    // document.createElement('div').style.display = 'none'
+    // document.createElement('textarea').style.display = 'none'
   }
 
   clickMore = () => {

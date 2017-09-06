@@ -28,14 +28,17 @@ class ClassTopic extends Component {
       document.getElementsByClassName('tallTitle')[0].innerHTML = content
     }
   }
+  topicClick = () => {
+    window.location.href = 'stationery.html'
+  }
   render () {
     let topicCollect = this.state.collect
     let topicTall = this.state.tall
     if (topicCollect.length > 0) {
       var topicCollectArr = [
-        <div className="topic">
-          <div className="topicMark" />
-          <img src={topicCollect[0].cover} width={450} height={166} alt="" />
+        <div className="topic" >
+          <div className="topicMark" onClick={this.topicClick} />
+          <img src={topicCollect[0].cover} width={450} height={166} />
           <div className="topicContent">
             <div className="topic-smallTitle">话题</div>
             <div className="topic-line" />

@@ -28,6 +28,7 @@ class ClassFollows extends Component {
             <div className="classFollow-usename"><a href="">{item.username}</a></div>
             <div className="classFollow-userImg">
               <img src={item.avatar} width={70} height={70} alt="" />
+              <img src={(item.userRole === 'professional') ? require('../assets/images/P.png') : require('../assets/images/C.png')} alt="" className="everyCommentUserRole" style={(item.userRole === 'professional') ? {'right': '-5'} : {'left': '-5'}} />
             </div>
             <div className="classFollow-bigLine" />
             <div className="clearFloat classFollow-bottom">

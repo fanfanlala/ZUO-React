@@ -3,7 +3,14 @@
  */
 import React, {Component} from 'react'
 import '../assets/styles/Homeright.styl'
+import HomeLittlePage from '../component/HomeContentClickLittlePage'
 class ClassCommend extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      createID: ''
+    }
+  }
   static propTypes = {
     classCommend: React.PropTypes.array
   }
@@ -14,12 +21,19 @@ class ClassCommend extends Component {
       content[i].innerHTML = contentText
     }
   }
+  tagClicks = (e) => {
+    console.log(e.target.id)
+    this.setState({
+      createID: e.target.id
+    })
+    document.getElementsByClassName('zuo-detail-modal')[0].style.display = 'block'
+  }
   render() {
-    let classCommendArr = this.props.classCommend.map(function (item, index) {
+    let classCommendArr = this.props.classCommend.map((item, index) => {
       return (
         <div className="classCommend-block clearFloat">
-          <a href="" className="classCommend-Img left">
-            <img src={item.attach_post.postImage.url} width={140} alt="" />
+          <a className="classCommend-Img left">
+            <img src={item.attach_post.postImage.url} width={140} onClick={this.tagClicks} id={item.objectId} />
           </a>
           <div className="left">
             <div className="classCommend-time">
@@ -39,6 +53,7 @@ class ClassCommend extends Component {
     return (
       <div id="classCommend" className="hotTagsContainer clearFloat" style={{display: 'none'}}>
         {classCommendArr}
+        <HomeLittlePage projectId={this.state.createID} />
       </div>
     )
   }
