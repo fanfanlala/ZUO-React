@@ -32,7 +32,6 @@ class StationeryRight extends Component {
   }
   componentDidUpdate () {
     var showDiv = document.getElementsByClassName('qrcode')[0]
-    console.log(this.state.flag)
     if (this.state.flag === true) {
       showDiv.style.top = 40 + 'px'
       showDiv.style.opacity = 1
