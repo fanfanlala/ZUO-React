@@ -35,34 +35,34 @@ class Login extends Component {
             phone: document.getElementsByClassName('phone')[0].value
           })
         })
-          .then(response => {
-            return response.json()
-          })
-          .then(response => {
-            console.log(response)
-            // ----分割线----
-            if (response.status === 'ok') {
-              document.getElementById('login_yard_btn').style.opacity = '0.4'
-              document.getElementById('codeContent').innerHTML = 's后可重发'
-              document.getElementById('codeTime').style.display = 'block'
-              let time = 60
-              let timer = setInterval(function () {
-                time--
-                document.getElementById('codeTime').innerHTML = time
-                if (time === 0) {
-                  clearInterval(timer)
-                  document.getElementById('codeTime').style.display = 'none'
-                  document.getElementById('codeContent').innerHTML = '发送验证码'
-                  document.getElementById('login_yard_btn').style.opacity = '1'
-                }
-              }, 1000)
-            }
-            if (response.status === 'fail' && response.error.msg === '手机号还没有注册') {
-              phone.style.border = '1px solid red'
-              phoneImg.src = require('../assets/images/手机号还没有注册.png')
-              phoneImg.style.display = 'block'
-            }
-          })
+        .then(response => {
+          return response.json()
+        })
+        .then(response => {
+          console.log(response)
+          // ----分割线----
+          if (response.status === 'ok') {
+            document.getElementById('login_yard_btn').style.opacity = '0.4'
+            document.getElementById('codeContent').innerHTML = 's后可重发'
+            document.getElementById('codeTime').style.display = 'block'
+            let time = 60
+            let timer = setInterval(function () {
+              time--
+              document.getElementById('codeTime').innerHTML = time
+              if (time === 0) {
+                clearInterval(timer)
+                document.getElementById('codeTime').style.display = 'none'
+                document.getElementById('codeContent').innerHTML = '发送验证码'
+                document.getElementById('login_yard_btn').style.opacity = '1'
+              }
+            }, 1000)
+          }
+          if (response.status === 'fail' && response.error.msg === '手机号还没有注册') {
+            phone.style.border = '1px solid red'
+            phoneImg.src = require('../assets/images/手机号还没有注册.png')
+            phoneImg.style.display = 'block'
+          }
+        })
       }
     }
   }

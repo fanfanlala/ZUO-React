@@ -20,7 +20,7 @@ class ArticleComment extends Component {
         <div className="everyComment">
           <div className="everyComment-img">
             <img src={(item.author.avatar === '/static/images/avatar.jpg') ? require('../assets/images/avatar.jpg') : item.author.avatar} />
-            <img src={(item.author.userRole === 'professional') ? require('../assets/images/P.png') : require('../assets/images/C.png')} alt="" style={(item.author.userRole === 'professional') ? {'right': '-5'} : {'left': '-5'}} />
+            <img src={(item.author.userRole === 'professional') ? require('../assets/images/P.png') : require('../assets/images/C.png')} alt="" style={(item.author.userRole === 'professional') ? {'right': '-5'} : {'left': '-5'}} className="everyCommentUserRole" />
           </div>
           <div className="everyComment-content">
             <div><a href="#">{item.author.username}</a></div>
